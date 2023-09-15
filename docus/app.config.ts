@@ -1,6 +1,6 @@
 export default defineAppConfig({
   docus: {
-    title: 'Mastodon Requirements Matrix',
+    title: 'Mastodon Requirements',
     description: 'Dependency matrix for Mastodon',
     image: 'https://docus--silver-elf-0a4fe3.netlify.app/mastodon-branches.png',
     socials: {
@@ -18,7 +18,7 @@ export default defineAppConfig({
     },
     header: {
       logo: false,
-      title: 'Mastodon Requirements Matrix',
+      title: 'Mastodon Requirements',
       showLinkIcon: true
     },
     footer: {
