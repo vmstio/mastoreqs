@@ -1,6 +1,6 @@
 export default defineAppConfig({
   docus: {
-    title: 'Mastodon Requirements',
+    title: 'Mastodon Requirements Matrix',
     description: 'Dependency matrix for Mastodon',
     image: 'https://raw.githubusercontent.com/vmstan/vmstio/main/images/vmstio-1280x640@3x.png',
     socials: {
@@ -18,7 +18,7 @@ export default defineAppConfig({
     },
     header: {
       logo: false,
-      title: 'docs.vmst.io',
+      title: 'Mastodon Requirements Matrix',
       showLinkIcon: true
     },
     footer: {
