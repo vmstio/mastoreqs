@@ -2,7 +2,7 @@ export default defineAppConfig({
   docus: {
     title: 'Mastodon Requirements',
     description: 'Dependency matrix for Mastodon',
-    image: 'https://docus--silver-elf-0a4fe3.netlify.app/mastodon-branches.png',
+    image: 'https://www.mastoreqs.com/mastodon-branches.png',
     socials: {
       mastodon: {
         label: 'Mastodon',
