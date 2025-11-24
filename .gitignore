@@ -1,2 +1,10 @@
 .DS_Store
 docus/.DS_Store
+node_modules
+.DS_Store
+.output
+.server
+.data
+.nuxt
+node_modules
+package-lock.json
