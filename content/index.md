@@ -17,7 +17,7 @@ This document is a best-effort, community maintained, support matrix of recent M
   color: neutral
   icon: i-simple-icons-ruby
   size: xl
-  to: /ruby
+  to: /components/ruby
   variant: outline
   ---
   Ruby
@@ -28,7 +28,7 @@ This document is a best-effort, community maintained, support matrix of recent M
   color: neutral
   icon: i-simple-icons-nodedotjs
   size: xl
-  to: /node
+  to: /components/node
   variant: outline
   ---
   Node
@@ -37,9 +37,9 @@ This document is a best-effort, community maintained, support matrix of recent M
   :::u-button
   ---
   color: neutral
-  icon: i-simple-icons-postgresql
+  icon: i-cib-postgresql
   size: xl
-  to: /postgres
+  to: /components/postgres
   variant: outline
   ---
   Postgres
@@ -50,7 +50,7 @@ This document is a best-effort, community maintained, support matrix of recent M
   color: neutral
   icon: i-simple-icons-amazonelasticache
   size: xl
-  to: /cache
+  to: /components/cache
   variant: outline
   ---
   Cache
@@ -100,7 +100,7 @@ Recent Changes
 
   :::u-page-feature
   ---
-  icon: i-simple-icons-postgresql
+  icon: i-cib-postgresql
   target: _blank
   to: https://www.postgresql.org/about/news/postgresql-18-released-3142/
   ---
