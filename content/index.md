@@ -60,7 +60,7 @@ This document is a best-effort, community maintained, support matrix of recent M
   ---
   color: neutral
   size: xl
-  to: /general/lifecycle
+  to: /lifecycle
   trailing-icon: i-lucide-arrow-right
   ---
   More
