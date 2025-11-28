@@ -9,7 +9,7 @@ seo:
 Mastodon Requirements
 
 #description
-This document is a best-effort, community maintained, support matrix of recent Mastodon releases and their underlying dependencies. It is designed to provide high-level guidance for determining upgrade paths, and what to deploy in an environment. Administrators should also consult the release notes for your version of Mastodon, and any product dependencies, before upgrading.
+Community maintained support matrix of recent Mastodon releases and their underlying dependencies. It is designed to provide high-level guidance for determining upgrade paths, and what to deploy in an environment. Administrators should also consult the release notes for your version of Mastodon, and any product dependencies, before upgrading.
 
 #links
   :::u-button
