@@ -89,7 +89,7 @@ Recent Changes
   ---
   icon: i-simple-icons-mastodon
   target: _blank
-  to: https://ui.nuxt.com/
+  to: https://github.com/mastodon/mastodon
   ---
   #title
   Support for [Mastodon 4.6]{.text-primary}
@@ -102,13 +102,13 @@ Recent Changes
   ---
   icon: i-cib-postgresql
   target: _blank
-  to: https://www.postgresql.org/about/news/postgresql-18-released-3142/
+  to: https://github.com/mastodon/mastodon/releases/tag/v4.2.29
   ---
   #title
-  Validated for [Postgres 18]{.text-primary}
+  Mastodon 4.2 now [End of Life]{.text-primary}
   
   #description
-  Matrix updated for the latest branch of the Postgres database.
+  The 4.2.29 release was the last version of Mastodon 4.2.
   :::
 
 ::
