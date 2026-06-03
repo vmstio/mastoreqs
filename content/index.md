@@ -95,20 +95,20 @@ Recent Changes
   Support for [Mastodon 4.6]{.text-primary}
   
   #description
-  Support for the latest development branch has been added.
+  Support for the beta release has been added.
   :::
 
   :::u-page-feature
   ---
   icon: i-cib-postgresql
   target: _blank
-  to: https://github.com/mastodon/mastodon/releases/tag/v4.2.29
+  to: https://github.com/mastodon/mastodon/releases/tag/v4.3.23
   ---
   #title
-  Mastodon 4.2 now [End of Life]{.text-primary}
+  Mastodon 4.3 now [End of Life]{.text-primary}
   
   #description
-  The 4.2.29 release was the last version of Mastodon 4.2.
+  The 4.3.23 release was the last version of Mastodon 4.3.
   :::
 
 ::
