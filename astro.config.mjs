@@ -11,6 +11,10 @@ export default defineConfig({
       description: 'Community maintained support matrix of recent Mastodon releases and their underlying dependencies.',
       favicon: '/favicon.svg',
       customCss: ['./src/styles/custom.css'],
+      components: {
+        // Remove the prev/next page navigation footer site-wide.
+        Pagination: './src/components/EmptyPagination.astro',
+      },
       head: [
         // Order matters: advisor-core defines window.MastoAdvisor, which both
         // matrix.js and upgrade-advisor.js consume. All defer, so they run in
