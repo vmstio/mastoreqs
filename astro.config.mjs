@@ -12,9 +12,20 @@ export default defineConfig({
       favicon: '/favicon.svg',
       customCss: ['./src/styles/custom.css'],
       head: [
+        // Order matters: advisor-core defines window.MastoAdvisor, which both
+        // matrix.js and upgrade-advisor.js consume. All defer, so they run in
+        // document order.
+        {
+          tag: 'script',
+          attrs: { src: '/scripts/advisor-core.js', defer: true },
+        },
         {
           tag: 'script',
           attrs: { src: '/scripts/matrix.js', defer: true },
+        },
+        {
+          tag: 'script',
+          attrs: { src: '/scripts/upgrade-advisor.js', defer: true },
         },
       ],
       social: [
@@ -34,6 +45,7 @@ export default defineConfig({
           label: 'Overview',
           items: [
             { label: 'Home', link: '/' },
+            { label: 'Upgrade Advisor', link: '/upgrade-advisor/' },
             { label: 'Support Lifecycle', link: '/lifecycle/' },
           ],
         },

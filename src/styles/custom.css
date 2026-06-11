@@ -511,7 +511,9 @@
   outline-offset: 1px;
 }
 
-.sm-advisor-result {
+.sm-advisor-result,
+.uadv-result,
+.uadv-global-note {
   margin: 0.9rem 0 0;
   padding: 0.7rem 0.85rem;
   border-radius: 0.5rem;
@@ -520,15 +522,87 @@
   font-size: var(--sl-text-sm);
   line-height: 1.5;
 }
-.sm-advisor-result.is-neutral {
+.sm-advisor-result.is-neutral,
+.uadv-result.is-neutral {
   color: var(--sl-color-gray-2);
 }
-.sm-advisor-result.is-ok {
+.sm-advisor-result.is-ok,
+.uadv-result.is-ok {
   border-left-color: var(--sm-yes);
 }
-.sm-advisor-result.is-warn {
+.sm-advisor-result.is-warn,
+.uadv-result.is-warn {
   border-left-color: var(--sm-warn);
 }
-.sm-advisor-result.is-required {
+.sm-advisor-result.is-required,
+.uadv-result.is-required,
+.uadv-global-note.is-required {
   border-left-color: var(--sm-no);
+}
+
+/* ---- Combined Upgrade Advisor ----------------------------------------- */
+
+.upgrade-advisor {
+  margin: 1.5rem 0;
+}
+
+/* Global Mastodon from/to picks, set apart as the controls everything below
+   reacts to. */
+.uadv-globals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--sm-gridline);
+  border-radius: var(--sm-radius);
+  background: var(--sl-color-gray-6);
+}
+
+.uadv-global-note {
+  margin-top: 0.9rem;
+}
+
+/* One card per dependency, two-up on wider viewports. */
+.uadv-sections {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 0.9rem;
+}
+@media (min-width: 50rem) {
+  .uadv-sections {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.uadv-section {
+  display: flex;
+  flex-direction: column;
+  padding: 0.9rem 1rem 1rem;
+  border: 1px solid var(--sm-gridline);
+  border-radius: var(--sm-radius);
+  background: var(--sl-color-gray-6);
+}
+.uadv-section h3 {
+  margin: 0 0 0.7rem;
+  font-size: var(--sl-text-h5);
+  font-weight: 600;
+}
+.uadv-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  /* Guaranteed breathing room before the advice, even on the taller card of a
+     pair where the result's auto top-margin collapses to zero. */
+  margin-bottom: 0.9rem;
+}
+.uadv-controls .sm-field {
+  flex: 1 1 8rem;
+}
+/* Push the result to the card's foot so paired cards keep a tidy baseline. */
+.uadv-result {
+  margin-top: auto;
+}
+.uadv-section .sm-field select:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
