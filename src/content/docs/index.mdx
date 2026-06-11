@@ -17,7 +17,7 @@ hero:
       variant: secondary
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 It is designed to provide high-level guidance for determining upgrade paths, and what
 to deploy in an environment. Administrators should also consult the release notes for
@@ -26,36 +26,12 @@ your version of Mastodon, and any product dependencies, before upgrading.
 ## Components
 
 <CardGrid>
-  <Card title="Ruby" icon="seti:ruby">
-    Webserver and Sidekiq runtime.
-    <a class="card-link" href="/components/ruby/" aria-label="View Ruby matrix"></a>
-  </Card>
-  <Card title="Node" icon="node">
-    Asset compilation and the streaming API.
-    <a class="card-link" href="/components/node/" aria-label="View Node matrix"></a>
-  </Card>
-  <Card title="Postgres" icon="seti:db">
-    Primary SQL database.
-    <a class="card-link" href="/components/postgres/" aria-label="View Postgres matrix"></a>
-  </Card>
-  <Card title="Cache" icon="rocket">
-    Redis, Valkey, or DragonflyDB.
-    <a class="card-link" href="/components/cache/" aria-label="View Cache matrix"></a>
-  </Card>
-  <Card title="libvips" icon="seti:image">
-    Image processing.
-    <a class="card-link" href="/components/libvips/" aria-label="View libvips matrix"></a>
-  </Card>
-  <Card title="FFmpeg" icon="seti:video">
-    Video processing.
-    <a class="card-link" href="/components/ffmpeg/" aria-label="View FFmpeg matrix"></a>
-  </Card>
-  <Card title="Search" icon="magnifier">
-    Elasticsearch or OpenSearch.
-    <a class="card-link" href="/components/search/" aria-label="View Search matrix"></a>
-  </Card>
-  <Card title="Nginx" icon="seti:nginx">
-    Reverse proxy and TLS termination.
-    <a class="card-link" href="/components/nginx/" aria-label="View Nginx matrix"></a>
-  </Card>
+  <LinkCard title="Ruby" href="/components/ruby/" description="Webserver and Sidekiq runtime." />
+  <LinkCard title="Node" href="/components/node/" description="Asset compilation and the streaming API." />
+  <LinkCard title="Postgres" href="/components/postgres/" description="Primary SQL database." />
+  <LinkCard title="Cache" href="/components/cache/" description="Redis, Valkey, or DragonflyDB." />
+  <LinkCard title="libvips" href="/components/libvips/" description="Image processing." />
+  <LinkCard title="FFmpeg" href="/components/ffmpeg/" description="Video processing." />
+  <LinkCard title="Search" href="/components/search/" description="Elasticsearch or OpenSearch." />
+  <LinkCard title="Nginx" href="/components/nginx/" description="Reverse proxy and TLS termination." />
 </CardGrid>

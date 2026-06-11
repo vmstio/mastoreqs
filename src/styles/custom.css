@@ -1,9 +1,7 @@
-:root {
-  /* Mastodon-flavored purple accent. */
-  --sl-color-accent-low: #281c52;
-  --sl-color-accent: #6364ff;
-  --sl-color-accent-high: #c1c2ff;
+/* Theme/chrome is provided by the Nova Starlight plugin. This file only styles
+   the bespoke support-matrix and upgrade-advisor components. */
 
+:root {
   /* Support-state palette (tuned for the default dark theme). */
   --sm-yes: #4ade80;
   --sm-yes-bg: rgba(74, 222, 128, 0.16);
@@ -15,28 +13,11 @@
   --sm-radius: 0.7rem;
   --sm-gridline: var(--sl-color-gray-5);
 
-  /* Custom <select> chevron, inlined so it inherits the accent in each theme. */
+  /* Custom <select> chevron for the upgrade advisor dropdowns. */
   --sm-select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%236364ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
-
-  /* Faceted Ruby gem for the Ruby component card — the recognizable cut-gem
-     mark in place of Seti's generic blob glyph. Red reads in both themes. */
-  --sm-ruby-gem: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d4302a' d='M6 3H18L22 9L12 22L2 9Z'/%3E%3Cg fill='none' stroke='%23721612' stroke-width='0.9' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M2 9H22'/%3E%3Cpath d='M6 3L8.5 9L12 22'/%3E%3Cpath d='M18 3L15.5 9L12 22'/%3E%3Cpath d='M8.5 9H15.5'/%3E%3C/g%3E%3C/svg%3E");
-
-  /* Shared brand "ink" — white reading into the purple accent. Resolves
-     per-theme because --sl-color-white flips to dark text in light mode. */
-  --brand-text-gradient: linear-gradient(
-    135deg,
-    var(--sl-color-white) 0%,
-    var(--sl-color-accent-high) 55%,
-    var(--sl-color-accent) 100%
-  );
 }
 
 :root[data-theme='light'] {
-  --sl-color-accent-low: #e0e0ff;
-  --sl-color-accent: #4a4bd6;
-  --sl-color-accent-high: #20215e;
-
   --sm-yes: #15803d;
   --sm-yes-bg: rgba(21, 128, 61, 0.12);
   --sm-warn: #a16207;
@@ -47,180 +28,6 @@
   --sm-gridline: var(--sl-color-gray-6);
 
   --sm-select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%234a4bd6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
-}
-
-/* ---- Site header ------------------------------------------------------ */
-
-/* Echo the hero: a faintly brand-tinted, blurred nav bar with a glowing
-   accent hairline along the bottom edge.
-
-   Scoped to `.page > .header` (the fixed PageFrame wrapper) because the inner
-   Header component reuses the same `.header` class — an unscoped rule would
-   paint both, doubling the background tint and bottom border. */
-.page > .header {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--sl-color-accent) 9%, var(--sl-color-bg-nav)),
-    var(--sl-color-bg-nav)
-  );
-  border-bottom: 1px solid
-    color-mix(in srgb, var(--sl-color-accent) 35%, var(--sl-color-hairline));
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-/* Center the search box within the header. At desktop widths Starlight lays
-   the header out as a 3-column grid (title | search 1fr | right-group); the
-   search button is capped at 22rem and left-aligns in its column by default.
-   Centering its flex wrapper keeps it in flow — so the right-group stays
-   pinned to the edge — while the button sits mid-column. */
-@media (min-width: 50rem) {
-  .page > .header .sl-flex:has(> site-search) {
-    justify-content: center;
-  }
-}
-
-/* Gradient site title, matching the hero headline. */
-.site-title span {
-  background: var(--brand-text-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  font-weight: 700;
-}
-
-/* ---- Home page / hero ------------------------------------------------- */
-
-/* Hero title: gradient ink reading from white into the brand purple for a
-   more modern, branded feel than flat foreground text. */
-.hero h1 {
-  background: var(--brand-text-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-.hero .tagline {
-  color: var(--sl-color-gray-2);
-  text-wrap: balance;
-}
-
-/* Hero terminal: shadow lives here (as a CSS filter on the <img>) rather than
-   inside the SVG — an in-SVG filter forces the artwork to rasterize at its
-   viewBox size and upscale fuzzily. CSS drop-shadow renders at device
-   resolution and follows the window's rounded shape. */
-.hero img {
-  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.5));
-}
-
-/* Soft brand glow behind the terminal artwork. A blurred radial sits on a
-   pseudo-element so it never clips the drop-shadow above. */
-.hero .hero-html {
-  position: relative;
-  isolation: isolate;
-}
-.hero .hero-html::before {
-  content: '';
-  position: absolute;
-  inset: -14%;
-  z-index: -1;
-  background: radial-gradient(
-    58% 58% at 50% 42%,
-    rgba(99, 100, 255, 0.4),
-    transparent 70%
-  );
-  filter: blur(46px);
-  pointer-events: none;
-}
-:root[data-theme='light'] .hero .hero-html::before {
-  background: radial-gradient(
-    58% 58% at 50% 42%,
-    rgba(99, 100, 255, 0.28),
-    transparent 70%
-  );
-}
-
-/* Action buttons: lift on hover, with a colored glow on the primary CTA. */
-.hero .sl-link-button {
-  transition: transform 0.16s ease, box-shadow 0.16s ease,
-    background 0.16s ease;
-}
-.hero .sl-link-button:hover {
-  transform: translateY(-2px);
-}
-.hero .sl-link-button.primary {
-  box-shadow: 0 10px 24px -8px rgba(99, 100, 255, 0.65);
-}
-.hero .sl-link-button.primary:hover {
-  box-shadow: 0 14px 30px -8px rgba(99, 100, 255, 0.8);
-}
-
-/* ---- Cards ------------------------------------------------------------- */
-
-.card {
-  border-radius: 0.9rem;
-  background: linear-gradient(
-    180deg,
-    var(--sl-color-gray-6),
-    color-mix(in srgb, var(--sl-color-gray-6) 55%, var(--sl-color-black))
-  );
-  transition: transform 0.18s ease, border-color 0.18s ease,
-    box-shadow 0.18s ease;
-}
-.card:hover {
-  transform: translateY(-3px);
-  border-color: var(--sl-color-accent);
-  box-shadow: 0 16px 32px -16px rgba(0, 0, 0, 0.65);
-}
-.card .icon {
-  border-radius: 0.55rem;
-}
-
-/* Swap the Ruby card's generic Seti glyph for a proper faceted gem. We keep
-   Starlight's bordered icon box and paint the gem as its background, then make
-   the underlying <path> transparent (it inherits `currentColor`) so only the
-   gem shows. Matched via the card's own link so it's order-independent. */
-.card:has(.card-link[href="/components/ruby/"]) .icon {
-  color: transparent;
-  background-image: var(--sm-ruby-gem);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 0.8em;
-}
-
-/* Whole-card link: an empty anchor whose ::after overlay covers the card, so
-   clicking anywhere on the card navigates. Lets the card keep its leading icon
-   (which Starlight's LinkCard can't show) while dropping the visible link. */
-.card:has(.card-link) {
-  position: relative;
-  cursor: pointer;
-}
-.card-link::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-}
-.card:has(.card-link):focus-within {
-  border-color: var(--sl-color-accent);
-}
-.card-link:focus-visible {
-  outline: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero .sl-link-button,
-  .card {
-    transition: none;
-  }
-  .hero .sl-link-button:hover,
-  .card:hover {
-    transform: none;
-  }
 }
 
 /* Visually-hidden helper for screen readers. */
@@ -278,11 +85,45 @@
   border-top: 1px solid var(--sm-gridline);
 }
 
-/* First column is narrower than the data columns. */
+/* First column: wide enough to caption the left axis with the component or
+   backend name (e.g. "Elasticsearch") without crowding the version numbers. */
 .support-matrix col,
 .sm-corner,
 .sm-row-head {
-  width: 4.75rem;
+  width: 6rem;
+}
+
+/* Axis labels make the grid self-describing — Mastodon across the top, the
+   component (or backend) down the left — so no separate "how to read" note is
+   needed. The band is thinner than the version row and keeps the heavy 2px
+   rule under the version headers, not under "Mastodon". */
+.support-matrix .sm-axis-row th,
+.support-matrix .sm-axis-row td {
+  height: 1.9rem;
+}
+.support-matrix .sm-axis-x {
+  font-size: var(--sl-text-xs);
+  font-weight: 600;
+  color: var(--sl-color-gray-2);
+  border-bottom: 0;
+}
+/* Quieter inline hint that the version headers are clickable. */
+.sm-axis-hint {
+  font-weight: 400;
+  color: var(--sl-color-gray-3);
+}
+.sm-axis-corner {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  background: var(--sl-color-gray-6);
+  border-right: 1px solid var(--sm-gridline);
+}
+.sm-corner-label {
+  font-size: var(--sl-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--sl-color-gray-2);
 }
 
 /* Header band */

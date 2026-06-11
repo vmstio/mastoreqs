@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightThemeNova from 'starlight-theme-nova';
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,6 +11,9 @@ export default defineConfig({
       title: 'Mastodon Requirements',
       description: 'Community maintained support matrix of recent Mastodon releases and their underlying dependencies.',
       favicon: '/favicon.svg',
+      // Nova provides the site theme/chrome; custom.css now only styles the
+      // bespoke support-matrix and upgrade-advisor components.
+      plugins: [starlightThemeNova()],
       customCss: ['./src/styles/custom.css'],
       // Hide the "On this page" table of contents site-wide. Individual pages
       // can opt back in with `tableOfContents: true` in their frontmatter.

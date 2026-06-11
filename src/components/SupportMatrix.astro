@@ -50,9 +50,16 @@ const symbols: Record<Exclude<Support, null>, string> = {
   <div class="sm-scroll">
     <table>
       <thead>
+        <tr class="sm-axis-row">
+          <td class="sm-axis-corner" aria-hidden="true" />
+          <th scope="colgroup" colspan={mastodonVersions.length} class="sm-axis-x">
+            Mastodon
+            <span class="sm-axis-hint">— click a version to focus its column</span>
+          </th>
+        </tr>
         <tr>
           <th scope="col" class="sm-corner">
-            <span class="sr-only">Component version \ Mastodon version</span>
+            <span class="sm-corner-label">{displayName}</span>
           </th>
           {
             mastodonVersions.map((v, i) => (
