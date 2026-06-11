@@ -11,6 +11,9 @@ export default defineConfig({
       description: 'Community maintained support matrix of recent Mastodon releases and their underlying dependencies.',
       favicon: '/favicon.svg',
       customCss: ['./src/styles/custom.css'],
+      // Hide the "On this page" table of contents site-wide. Individual pages
+      // can opt back in with `tableOfContents: true` in their frontmatter.
+      tableOfContents: false,
       components: {
         // Remove the prev/next page navigation footer site-wide.
         Pagination: './src/components/EmptyPagination.astro',
