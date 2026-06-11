@@ -43,6 +43,25 @@
   border: 0;
 }
 
+/* ---- Home hero -------------------------------------------------------- */
+
+/* Enlarge the terminal graphic beyond Starlight's default size caps. The image
+   is bounded by its grid column, so the column is widened alongside the cap —
+   raising the cap alone wouldn't grow it on typical viewports. Selectors are
+   kept a touch more specific than Starlight's `:where()`-scoped hero rules so
+   they win despite loading earlier. */
+.hero > :is(img, .hero-html) {
+  width: min(85%, 26rem);
+}
+@media (min-width: 50rem) {
+  body .hero {
+    grid-template-columns: 6fr 5fr;
+  }
+  .hero > :is(img, .hero-html) {
+    width: min(100%, 34rem);
+  }
+}
+
 /* ---- Support matrix --------------------------------------------------- */
 
 .support-matrix {

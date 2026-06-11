@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 384" width="680" height="384" role="img" aria-label="Terminal showing a Ruby upgrade in progress">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 452" width="680" height="452" role="img" aria-label="Terminal showing a Ruby upgrade in progress">
   <defs>
     <style>
       .mono { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
@@ -7,6 +7,7 @@
       .muted  { fill: #6c7086; }
       .ruby   { fill: #f38ba8; }
       .accent { fill: #8b8cff; }
+      .ok     { fill: #a6e3a1; }
     </style>
   </defs>
 
@@ -15,7 +16,7 @@
   <g transform="translate(40,24)">
   <!-- Window -->
   <g>
-    <rect x="8" y="8" width="584" height="284" rx="14" fill="#11111b" stroke="#313244" stroke-width="1"/>
+    <rect x="8" y="8" width="584" height="360" rx="14" fill="#11111b" stroke="#313244" stroke-width="1"/>
     <!-- Title bar -->
     <path d="M8 22 A14 14 0 0 1 22 8 H578 A14 14 0 0 1 592 22 V52 H8 Z" fill="#181825"/>
     <line x1="8" y1="52" x2="592" y2="52" stroke="#313244" stroke-width="1"/>
@@ -35,15 +36,23 @@
     <!-- Simulated ruby-build output -->
     <text x="32" y="168" class="muted">Downloading ruby-<tspan class="ruby">4.0.5</tspan>.tar.gz...</text>
     <text x="32" y="196" class="muted" font-size="14">-&gt; https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.5.tar.gz</text>
+    <text x="32" y="224" class="muted"><tspan class="ok">✓</tspan> Installed ruby-<tspan class="ruby">4.0.5</tspan></text>
 
-    <!-- Spinner + installing line -->
-    <g transform="translate(40,219)">
+    <!-- Verify the new runtime -->
+    <text x="32" y="252"><tspan class="prompt">$ </tspan><tspan class="cmd">ruby -v</tspan></text>
+    <text x="32" y="280" class="muted">ruby <tspan class="ruby">4.0.5</tspan></text>
+
+    <!-- Reinstall gems for the new Ruby -->
+    <text x="32" y="308"><tspan class="prompt">$ </tspan><tspan class="cmd">bundle install</tspan></text>
+
+    <!-- Spinner + in-progress line -->
+    <g transform="translate(40,331)">
       <circle cx="0" cy="0" r="7" fill="none" stroke="#313244" stroke-width="2.5"/>
       <path d="M0,-7 A7,7 0 0 1 7,0" fill="none" stroke="#8b8cff" stroke-width="2.5" stroke-linecap="round">
         <animateTransform attributeName="transform" type="rotate" values="0;360" dur="0.8s" repeatCount="indefinite"/>
       </path>
     </g>
-    <text x="58" y="224" class="muted">Installing ruby-<tspan class="ruby">4.0.5</tspan>...</text>
+    <text x="58" y="336" class="muted">Bundling gems...</text>
   </g>
   </g>
 </svg>
