@@ -42,7 +42,7 @@
             { "version": "22.x", "support": ["yes", "yes", "yes", "yes", null, null, null, null, null] },
             { "version": "20.x", "support": ["no", "warn", "warn", "warn", "warn", null, null, null, null] },
             { "version": "18.x", "support": ["no", "no", "no", "warn", "warn", "warn", "no", null, null] },
-            { "version": "16.x", "support": ["no", "no", "no", "no", "warn", "warn", "warn", "warn", "warn"] },
+            { "version": "16.x", "support": ["no", "no", "no", "no", "warn", "warn", "warn", "warn", "no"] },
             { "version": "14.x", "support": ["no", "no", "no", "no", "no", "warn", "warn", "warn", "warn"] },
             { "version": "12.x", "support": ["no", "no", "no", "no", "no", "no", "warn", "warn", "warn"] }
           ]
