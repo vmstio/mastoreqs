@@ -166,7 +166,8 @@
           "rows": [
             { "version": "9.x", "support": ["yes", "yes", null, null, null] },
             { "version": "8.x", "support": ["yes", "yes", "yes", "yes", "yes"] },
-            { "version": "7.x", "support": ["warn", "warn", "warn", "warn", "warn"] }
+            { "version": "7.x", "support": ["warn", "warn", "warn", "warn", "warn"] },
+            { "version": "6.x", "support": ["no", "no", "no", "no", "no"] }
           ]
         },
         {
@@ -174,7 +175,8 @@
           "label": "OpenSearch",
           "rows": [
             { "version": "3.x", "support": ["yes", "yes", null, null, null] },
-            { "version": "2.x", "support": ["yes", "yes", "yes", "yes", "yes"] }
+            { "version": "2.x", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "1.x", "support": ["no", "no", "no", "no", "no"] }
           ]
         }
       ]
@@ -188,22 +190,23 @@
           "rows": [
             { "version": "1.31", "support": ["yes", "yes", "yes", "yes", "yes"] },
             { "version": "1.30", "support": ["yes", "yes", "yes", "yes", "yes"] },
-            { "version": "1.29", "support": ["warn", "warn", "warn", "warn", "warn"] },
-            { "version": "1.28", "support": ["warn", "warn", "warn", "warn", "warn"] },
-            { "version": "1.27", "support": ["warn", "warn", "warn", "warn", "warn"] },
-            { "version": "1.26", "support": ["warn", "warn", "warn", "warn", "warn"] },
-            { "version": "1.25", "support": ["warn", "warn", "warn", "warn", "warn"] },
-            { "version": "1.24", "support": ["warn", "warn", "warn", "warn", "warn"] },
-            { "version": "1.23", "support": ["warn", "warn", "warn", "warn", "warn"] },
-            { "version": "1.22", "support": ["warn", "warn", "warn", "warn", "warn"] }
+            { "version": "1.29", "support": ["no", "no", "no", "no", "no"] }
           ]
         },
         {
           "id": "caddy",
           "label": "Caddy",
           "rows": [
-            { "version": "2", "support": ["yes", "yes", "yes", "yes", "yes"] },
-            { "version": "1", "support": ["warn", "warn", "warn", "warn", "warn"] }
+            { "version": "2.x", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "1.x", "support": ["no", "no", "no", "no", "no"] }
+          ]
+        },
+        {
+          "id": "apache",
+          "label": "Apache",
+          "rows": [
+            { "version": "2.4", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "2.2", "support": ["no", "no", "no", "no", "no"] }
           ]
         }
       ]
