@@ -178,6 +178,35 @@
           ]
         }
       ]
+    },
+    "nginx": {
+      "title": "Ingress",
+      "matrices": [
+        {
+          "id": "nginx",
+          "label": "Nginx",
+          "rows": [
+            { "version": "1.31", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "1.30", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "1.29", "support": ["warn", "warn", "warn", "warn", "warn"] },
+            { "version": "1.28", "support": ["warn", "warn", "warn", "warn", "warn"] },
+            { "version": "1.27", "support": ["warn", "warn", "warn", "warn", "warn"] },
+            { "version": "1.26", "support": ["warn", "warn", "warn", "warn", "warn"] },
+            { "version": "1.25", "support": ["warn", "warn", "warn", "warn", "warn"] },
+            { "version": "1.24", "support": ["warn", "warn", "warn", "warn", "warn"] },
+            { "version": "1.23", "support": ["warn", "warn", "warn", "warn", "warn"] },
+            { "version": "1.22", "support": ["warn", "warn", "warn", "warn", "warn"] }
+          ]
+        },
+        {
+          "id": "caddy",
+          "label": "Caddy",
+          "rows": [
+            { "version": "2", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "1", "support": ["warn", "warn", "warn", "warn", "warn"] }
+          ]
+        }
+      ]
     }
   }
 }
