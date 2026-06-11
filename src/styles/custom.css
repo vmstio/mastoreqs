@@ -31,6 +31,14 @@
   --sm-gridline: var(--sl-color-gray-6);
 }
 
+/* Hero terminal: shadow lives here (as a CSS filter on the <img>) rather than
+   inside the SVG — an in-SVG filter forces the artwork to rasterize at its
+   viewBox size and upscale fuzzily. CSS drop-shadow renders at device
+   resolution and follows the window's rounded shape. */
+.hero img {
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.45));
+}
+
 /* Visually-hidden helper for screen readers. */
 .sr-only {
   position: absolute;
