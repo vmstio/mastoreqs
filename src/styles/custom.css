@@ -64,7 +64,12 @@
   width: 100%;
   min-width: 32rem;
   margin: 0;
-  border-collapse: collapse;
+  /* `separate` (not `collapse`) so each hairline is painted on its own cell and
+     snapped to the pixel grid independently. With `collapse`, a shared 1px
+     border can land on a half-pixel at non-retina DPI/zoom and drop out,
+     leaving a stray gap between two rows. */
+  border-collapse: separate;
+  border-spacing: 0;
   font-variant-numeric: tabular-nums;
   font-size: var(--sl-text-sm);
 }
@@ -79,10 +84,15 @@
   height: 2.6rem;
 }
 
-/* Light gridlines between data cells only. */
+/* Light gridlines between data rows. The first row skips its top border so it
+   doesn't stack beneath the header's 2px rule (borders no longer collapse). */
 .support-matrix tbody td,
 .support-matrix tbody .sm-row-head {
   border-top: 1px solid var(--sm-gridline);
+}
+.support-matrix tbody tr:first-child td,
+.support-matrix tbody tr:first-child .sm-row-head {
+  border-top: 0;
 }
 
 /* First column: wide enough to caption the left axis with the component or
@@ -106,6 +116,8 @@
   font-weight: 600;
   color: var(--sl-color-gray-2);
   border-bottom: 0;
+  text-align: left;
+  padding-left: 0.6rem;
 }
 /* Quieter inline hint that the version headers are clickable. */
 .sm-axis-hint {

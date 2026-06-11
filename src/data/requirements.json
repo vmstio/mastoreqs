@@ -125,8 +125,10 @@
           "id": "imagemagick",
           "label": "ImageMagick",
           "rows": [
-            { "version": "7.0+", "support": ["no", "warn", "warn", "yes", "yes"] },
-            { "version": "6.9.7-7+", "support": ["no", "warn", "warn", "yes", "yes"] }
+            { "version": "7.1", "support": ["no", "warn", "warn", "yes", "yes"] },
+            { "version": "7.0", "support": ["no", "warn", "warn", "yes", "yes"] },
+            { "version": "6.9", "support": ["no", "warn", "warn", "yes", "yes"] },
+            { "version": "6.8", "support": ["no", "no", "no", "no", "no"] }
           ]
         }
       ]
