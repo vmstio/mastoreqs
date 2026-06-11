@@ -30,9 +30,9 @@ const matrix = getMatrix(component, matrixId);
 const displayName = matrix.label ?? components[component].title;
 
 const labels: Record<Exclude<Support, null>, string> = {
-  yes: 'Supported in this version',
-  warn: 'Deprecated, use with caution',
-  no: 'Not supported in this version',
+  yes: 'Supported',
+  warn: 'Deprecated',
+  no: 'End of Life',
 };
 
 const symbols: Record<Exclude<Support, null>, string> = {
@@ -108,10 +108,10 @@ const symbols: Record<Exclude<Support, null>, string> = {
           <span class="sm-mark">✓</span> Supported
         </span>
         <span class="sm-legend-item" data-state="warn">
-          <span class="sm-mark">!</span> Deprecated, use with caution
+          <span class="sm-mark">!</span> Deprecated
         </span>
         <span class="sm-legend-item" data-state="no">
-          <span class="sm-mark">✕</span> Not supported
+          <span class="sm-mark">✕</span> End of Life
         </span>
       </div>
     )
