@@ -1,0 +1,215 @@
+{
+  "mastodonVersions": ["4.6", "4.5", "4.4", "4.3", "4.2"],
+  "lifecycle": [
+    { "version": "4.6", "status": "Main Development Branch", "endOfLife": null, "state": "development" },
+    { "version": "4.5", "status": "Latest Release Branch", "endOfLife": null, "state": "supported" },
+    { "version": "4.4", "status": "Previous Release Branch", "endOfLife": null, "state": "supported" },
+    { "version": "4.3", "status": "End of Life", "endOfLife": "2026-05-06", "state": "eol" },
+    { "version": "4.2", "status": "End of Life", "endOfLife": "2026-01-08", "state": "eol" },
+    { "version": "4.1", "status": "End of Life", "endOfLife": "2025-04-08", "state": "eol" },
+    { "version": "4.0", "status": "End of Life", "endOfLife": "2023-10-31", "state": "eol" },
+    { "version": "3.x", "status": "End of Life", "endOfLife": "2023-12-31", "state": "eol" }
+  ],
+  "components": {
+    "ruby": {
+      "title": "Ruby",
+      "matrices": [
+        {
+          "id": "ruby",
+          "label": null,
+          "rows": [
+            { "version": "4.0", "support": ["yes", null, null, null, null] },
+            { "version": "3.4", "support": ["yes", "yes", "yes", null, null] },
+            { "version": "3.3", "support": ["yes", "yes", "yes", "yes", null] },
+            { "version": "3.2", "support": ["no", "warn", "warn", "warn", "warn"] },
+            { "version": "3.1", "support": ["no", "no", "no", "warn", "warn"] },
+            { "version": "3.0", "support": ["no", "no", "no", "no", "warn"] },
+            { "version": "2.7", "support": ["no", "no", "no", "no", "no"] }
+          ]
+        }
+      ]
+    },
+    "node": {
+      "title": "Node",
+      "matrices": [
+        {
+          "id": "node",
+          "label": null,
+          "rows": [
+            { "version": "26.x", "support": ["yes", null, null, null, null] },
+            { "version": "24.x", "support": ["yes", "yes", "yes", null, null] },
+            { "version": "22.x", "support": ["yes", "yes", "yes", "yes", null] },
+            { "version": "20.x", "support": ["no", "warn", "warn", "warn", "warn"] },
+            { "version": "18.x", "support": ["no", "no", "no", "warn", "warn"] },
+            { "version": "16.x", "support": ["no", "no", "no", "no", "warn"] },
+            { "version": "14.x", "support": ["no", "no", "no", "no", "no"] }
+          ]
+        }
+      ]
+    },
+    "postgres": {
+      "title": "Postgres",
+      "matrices": [
+        {
+          "id": "postgres",
+          "label": null,
+          "rows": [
+            { "version": "18.x", "support": ["yes", "yes", null, null, null] },
+            { "version": "17.x", "support": ["yes", "yes", "yes", null, null] },
+            { "version": "16.x", "support": ["yes", "yes", "yes", null, null] },
+            { "version": "15.x", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "14.x", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "13.x", "support": ["no", "no", "warn", "warn", "warn"] },
+            { "version": "12.x", "support": ["no", "no", "no", "warn", "warn"] },
+            { "version": "11.x", "support": ["no", "no", "no", "warn", "warn"] },
+            { "version": "10.x", "support": ["no", "no", "no", "warn", "warn"] }
+          ]
+        }
+      ]
+    },
+    "cache": {
+      "title": "Cache",
+      "matrices": [
+        {
+          "id": "valkey",
+          "label": "Valkey",
+          "rows": [
+            { "version": "9.1", "support": ["yes", null, null, null, null] },
+            { "version": "9.0", "support": ["yes", "yes", null, null, null] },
+            { "version": "8.1", "support": ["yes", "yes", "yes", null, null] },
+            { "version": "8.0", "support": ["yes", "yes", "yes", null, null] },
+            { "version": "7.2", "support": ["yes", "yes", "yes", null, null] }
+          ]
+        },
+        {
+          "id": "redis",
+          "label": "Redis",
+          "rows": [
+            { "version": "8.8", "support": ["yes", null, null, null, null] },
+            { "version": "8.6", "support": ["yes", null, null, null, null] },
+            { "version": "8.4", "support": ["yes", "yes", null, null, null] },
+            { "version": "8.2", "support": ["warn", "warn", null, null, null] },
+            { "version": "8.0", "support": ["warn", "warn", "warn", null, null] },
+            { "version": "7.4", "support": ["yes", "yes", "yes", null, null] },
+            { "version": "7.2", "support": ["yes", "yes", "yes", "yes", null] },
+            { "version": "7.0", "support": ["warn", "warn", "warn", "warn", "warn"] },
+            { "version": "6.2", "support": ["no", "no", "warn", "warn", "warn"] },
+            { "version": "6.0", "support": ["no", "no", "warn", "warn", "warn"] }
+          ]
+        },
+        {
+          "id": "dragonfly",
+          "label": "Dragonfly",
+          "rows": [
+            { "version": "1.26.3+", "support": ["yes", "yes", "no", "no", "no"] }
+          ]
+        }
+      ]
+    },
+    "libvips": {
+      "title": "libvips",
+      "matrices": [
+        {
+          "id": "libvips",
+          "label": "libvips",
+          "rows": [
+            { "version": "8.18", "support": ["yes", null, null, null, null] },
+            { "version": "8.17", "support": ["yes", "yes", null, null, null] },
+            { "version": "8.16", "support": ["yes", "yes", "yes", null, null] },
+            { "version": "8.15", "support": ["yes", "yes", "yes", null, null] },
+            { "version": "8.14", "support": ["yes", "yes", "yes", null, null] },
+            { "version": "8.13", "support": ["yes", "yes", "yes", null, null] }
+          ]
+        },
+        {
+          "id": "imagemagick",
+          "label": "ImageMagick",
+          "rows": [
+            { "version": "7.1", "support": ["no", "warn", "warn", "yes", "yes"] },
+            { "version": "7.0", "support": ["no", "warn", "warn", "yes", "yes"] },
+            { "version": "6.9", "support": ["no", "warn", "warn", "yes", "yes"] },
+            { "version": "6.8", "support": ["no", "no", "no", "no", "no"] }
+          ]
+        }
+      ]
+    },
+    "ffmpeg": {
+      "title": "FFmpeg",
+      "matrices": [
+        {
+          "id": "ffmpeg",
+          "label": null,
+          "rows": [
+            { "version": "8.1", "support": ["yes", null, null, null, null] },
+            { "version": "8.0", "support": ["yes", "yes", null, null, null] },
+            { "version": "7.1", "support": ["yes", "yes", "yes", "yes", null] },
+            { "version": "7.0", "support": ["yes", "yes", "yes", "yes", null] },
+            { "version": "6.1", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "6.0", "support": ["warn", "warn", "warn", "warn", "warn"] },
+            { "version": "5.1", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "5.0", "support": ["warn", "warn", "warn", "warn", "warn"] },
+            { "version": "4.4", "support": ["no", "yes", "yes", "yes", "yes"] },
+            { "version": "4.3", "support": ["no", "yes", "yes", "yes", "yes"] },
+            { "version": "4.2", "support": ["no", "yes", "yes", "yes", "yes"] },
+            { "version": "4.1", "support": ["no", "warn", "warn", "warn", "warn"] },
+            { "version": "4.0", "support": ["no", "warn", "warn", "warn", "warn"] }
+          ]
+        }
+      ]
+    },
+    "search": {
+      "title": "Search",
+      "matrices": [
+        {
+          "id": "elasticsearch",
+          "label": "Elasticsearch",
+          "rows": [
+            { "version": "9.x", "support": ["yes", "yes", null, null, null] },
+            { "version": "8.x", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "7.x", "support": ["warn", "warn", "warn", "warn", "warn"] },
+            { "version": "6.x", "support": ["no", "no", "no", "no", "no"] }
+          ]
+        },
+        {
+          "id": "opensearch",
+          "label": "OpenSearch",
+          "rows": [
+            { "version": "3.x", "support": ["yes", "yes", null, null, null] },
+            { "version": "2.x", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "1.x", "support": ["no", "no", "no", "no", "no"] }
+          ]
+        }
+      ]
+    },
+    "nginx": {
+      "title": "Ingress",
+      "matrices": [
+        {
+          "id": "nginx",
+          "label": "Nginx",
+          "rows": [
+            { "version": "1.31", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "1.30", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "1.29", "support": ["no", "no", "no", "no", "no"] }
+          ]
+        },
+        {
+          "id": "caddy",
+          "label": "Caddy",
+          "rows": [
+            { "version": "2.x", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "1.x", "support": ["no", "no", "no", "no", "no"] }
+          ]
+        },
+        {
+          "id": "apache",
+          "label": "Apache",
+          "rows": [
+            { "version": "2.4", "support": ["yes", "yes", "yes", "yes", "yes"] },
+            { "version": "2.2", "support": ["no", "no", "no", "no", "no"] }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,162 @@
+---
+import { mastodonVersions, components, type Support } from '../data/requirements';
+
+// Flatten every component matrix into a `${componentId}:${matrixId}` lookup of
+// rows, mapping the `null` "not applicable" cells to the 'na' string the
+// advisor logic expects. This whole structure is embedded in the page so the
+// combined advisor runs entirely client-side with no extra requests.
+const toState = (s: Support): string => s ?? 'na';
+const matrices: Record<string, { version: string; states: string[] }[]> = {};
+for (const [cid, comp] of Object.entries(components)) {
+  for (const m of comp.matrices) {
+    matrices[`${cid}:${m.id}`] = m.rows.map((r) => ({
+      version: r.version,
+      states: r.support.map(toState),
+    }));
+  }
+}
+const data = { mastodonVersions, matrices };
+
+// Per-dependency sections. Single-backend components carry a `key`; components
+// where the admin picks one of several backends carry `providers` (and an
+// optional flag when the dependency itself is optional, e.g. search).
+interface Provider {
+  label: string;
+  key: string;
+}
+interface Section {
+  id: string;
+  title: string;
+  /** Label for the version <select> caption and (single sections) the advice name. */
+  name?: string;
+  /** Single-backend matrix key. */
+  key?: string;
+  /** Caption for the backend <select>, e.g. "Cache backend". */
+  providerLabel?: string;
+  providers?: Provider[];
+  optional?: boolean;
+  /** Image processor: enables ImageMagick → libvips migration awareness. */
+  image?: boolean;
+}
+
+const sections: Section[] = [
+  { id: 'ruby', title: 'Ruby', name: 'Ruby', key: 'ruby:ruby' },
+  { id: 'node', title: 'Node', name: 'Node', key: 'node:node' },
+  { id: 'postgres', title: 'PostgreSQL', name: 'PostgreSQL', key: 'postgres:postgres' },
+  {
+    id: 'cache',
+    title: 'Cache',
+    providerLabel: 'Cache backend',
+    providers: [
+      { label: 'Valkey', key: 'cache:valkey' },
+      { label: 'Redis', key: 'cache:redis' },
+      { label: 'DragonflyDB', key: 'cache:dragonfly' },
+    ],
+  },
+  {
+    id: 'image',
+    title: 'Image processing',
+    providerLabel: 'Image processor',
+    image: true,
+    providers: [
+      { label: 'libvips', key: 'libvips:libvips' },
+      { label: 'ImageMagick', key: 'libvips:imagemagick' },
+    ],
+  },
+  { id: 'ffmpeg', title: 'FFmpeg', name: 'FFmpeg', key: 'ffmpeg:ffmpeg' },
+  {
+    id: 'search',
+    title: 'Search',
+    providerLabel: 'Search backend',
+    optional: true,
+    providers: [
+      { label: 'Elasticsearch', key: 'search:elasticsearch' },
+      { label: 'OpenSearch', key: 'search:opensearch' },
+    ],
+  },
+  {
+    id: 'ingress',
+    title: 'Ingress',
+    providerLabel: 'Ingress software',
+    providers: [
+      { label: 'Nginx', key: 'nginx:nginx' },
+      { label: 'Caddy', key: 'nginx:caddy' },
+      { label: 'Apache', key: 'nginx:apache' },
+    ],
+  },
+];
+---
+
+<div class="advisor not-content" data-advisor>
+  <script
+    type="application/json"
+    data-advisor-data
+    is:inline
+    set:html={JSON.stringify(data)}
+  />
+
+  <div class="uadv-globals">
+    <label class="sm-field">
+      <span>Current Mastodon</span>
+      <select class="uadv-from">
+        {mastodonVersions.map((v, i) => (
+          <option value={i} selected={i === 1}>{v}</option>
+        ))}
+      </select>
+    </label>
+    <label class="sm-field">
+      <span>Upgrading to</span>
+      <select class="uadv-to">
+        {mastodonVersions.map((v, i) => (
+          <option value={i} selected={i === 0}>{v}</option>
+        ))}
+      </select>
+    </label>
+  </div>
+
+  <p class="uadv-global-note is-required" role="status" aria-live="polite" hidden></p>
+
+  <div class="uadv-sections">
+    {
+      sections.map((s) => (
+        <section
+          class="uadv-section"
+          data-section={s.id}
+          data-key={s.key ?? ''}
+          data-name={s.name ?? ''}
+          data-image={s.image ? 'true' : ''}
+          data-optional={s.optional ? 'true' : ''}
+        >
+          <h3>{s.title}</h3>
+          <div class="uadv-controls">
+            {s.providers && (
+              <label class="sm-field">
+                <span>{s.providerLabel}</span>
+                <select class="uadv-provider">
+                  <option value="">{s.optional ? 'Not used' : 'Select…'}</option>
+                  {s.providers.map((p) => (
+                    <option value={p.key} data-label={p.label}>{p.label}</option>
+                  ))}
+                </select>
+              </label>
+            )}
+            <label class="sm-field">
+              <span>Version</span>
+              <select class="uadv-cur" disabled={!!s.providers}>
+                <option value="">Select…</option>
+                {!s.providers &&
+                  s.key &&
+                  data.matrices[s.key].map((r) => (
+                    <option value={r.version}>{r.version}</option>
+                  ))}
+              </select>
+            </label>
+          </div>
+          <p class="uadv-result is-neutral" role="status" aria-live="polite">
+            Select your version to see upgrade guidance.
+          </p>
+        </section>
+      ))
+    }
+  </div>
+</div>

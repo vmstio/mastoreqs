@@ -1,0 +1,31 @@
+---
+title: Ruby
+description: Mastodon requires an installation of Ruby for the webserver and Sidekiq components.
+sidebar:
+  order: 1
+---
+
+import SupportMatrix from '../../../components/SupportMatrix.astro';
+
+Mastodon requires an installation of Ruby for the webserver and Sidekiq components, and
+administrators must ensure a supported Ruby version is present and configured.
+
+<SupportMatrix component="ruby" />
+
+References: [Ruby Branches](https://www.ruby-lang.org/en/downloads/branches/)
+
+```bash
+# Check running version
+ruby -v
+```
+
+:::tip
+Mastodon has a file called `.ruby-version` in the source code that is the expected target
+version for that release. You should use [rbenv](https://github.com/rbenv/rbenv) to install
+and manage the target Ruby version.
+:::
+
+:::note
+The official Mastodon [container image](https://hub.docker.com/u/tootsuite) will always use
+the correct target version of Ruby for that release.
+:::

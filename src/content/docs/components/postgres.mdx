@@ -1,0 +1,25 @@
+---
+title: Postgres
+description: Mastodon requires an installation of Postgres as the primary SQL database.
+sidebar:
+  order: 3
+---
+
+import SupportMatrix from '../../../components/SupportMatrix.astro';
+
+Mastodon requires an installation of Postgres as the primary SQL database, and administrators
+must ensure a supported Postgres version is present and configured.
+
+<SupportMatrix component="postgres" />
+
+References: [Postgres Versioning](https://www.postgresql.org/support/versioning/)
+
+```bash
+# Check running version
+psql --version
+```
+
+:::danger
+Always use caution when moving between major versions of Postgres (ex: 15.x to 16.x) as
+failure to adequately plan this migration may result in data-loss!
+:::

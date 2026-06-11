@@ -1,0 +1,37 @@
+---
+title: Mastodon Requirements
+description: Community maintained support matrix of recent Mastodon releases and their underlying dependencies.
+template: splash
+hero:
+  tagline: A community maintained support matrix of recent Mastodon releases and their underlying dependencies.
+  image:
+    file: ../../assets/ruby-terminal.svg
+  actions:
+    - text: Upgrade Advisor
+      link: /advisor/
+      icon: right-arrow
+      variant: primary
+    - text: Support Lifecycle
+      link: /lifecycle/
+      icon: right-arrow
+      variant: secondary
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+It is designed to provide high-level guidance for determining upgrade paths, and what
+to deploy in an environment. Administrators should also consult the release notes for
+your version of Mastodon, and any product dependencies, before upgrading.
+
+## Components
+
+<CardGrid>
+  <LinkCard title="Ruby" href="/components/ruby/" description="Webserver and Sidekiq runtime." />
+  <LinkCard title="Node" href="/components/node/" description="Asset compilation and the streaming API." />
+  <LinkCard title="Postgres" href="/components/postgres/" description="Primary SQL database." />
+  <LinkCard title="Cache" href="/components/cache/" description="Redis, Valkey, or DragonflyDB." />
+  <LinkCard title="Images" href="/components/libvips/" description="libvips or ImageMagick." />
+  <LinkCard title="FFmpeg" href="/components/ffmpeg/" description="Video processing." />
+  <LinkCard title="Search" href="/components/search/" description="Elasticsearch or OpenSearch." />
+  <LinkCard title="Ingress" href="/components/nginx/" description="Reverse proxy and TLS termination." />
+</CardGrid>

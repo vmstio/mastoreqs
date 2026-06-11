@@ -1,0 +1,66 @@
+---
+title: Ingress
+description: Mastodon requires a load balancer or reverse proxy to terminate TLS and ingress traffic.
+sidebar:
+  order: 8
+---
+
+import SupportMatrix from '../../../components/SupportMatrix.astro';
+
+Mastodon requires a load balancer, ingress or reverse proxy to properly terminate TLS/SSL connections
+between users and the Mastodon web interface and API.
+
+While there is no specific technical requirement or limitation on what software can be used, Nginx is commonly used for this purpose.
+Mastodon has no version-specific requirement for ingress software.
+
+:::note
+Regardless of the ingress software that is used, you should keep it up to date to prevent exploitation of known security vulnerabilities.
+:::
+
+## Nginx
+
+<SupportMatrix component="nginx" matrix="nginx" />
+
+References: [Nginx Releases](https://nginx.org/en/CHANGES)
+
+```bash
+# Check running version
+nginx -v
+```
+
+:::tip
+[An example configuration](https://github.com/mastodon/mastodon/blob/main/dist/nginx.conf)
+is provided in the Mastodon repository.
+:::
+
+## Caddy
+
+<SupportMatrix component="nginx" matrix="caddy" />
+
+References: [Caddy Security Policy](https://github.com/caddyserver/caddy/blob/main/SECURITY.md)
+
+```bash
+# Check running version
+caddy version
+```
+
+:::caution
+Only the latest 2.x.x release is considered supported by the Caddy project.
+:::
+
+## Apache
+
+<SupportMatrix component="nginx" matrix="apache" />
+
+References: [Apache HTTP Server](https://httpd.apache.org/)
+
+```bash
+# Check running version
+httpd -v 
+# On Debian/Ubuntu
+apache2 -v
+```
+
+:::caution
+Only the latest 2.4.x release is considered supported by the Apache project.
+:::

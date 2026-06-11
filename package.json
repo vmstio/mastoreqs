@@ -1,13 +1,18 @@
 {
-  "name": "docus-mastoreqs",
+  "name": "mastoreqs",
+  "type": "module",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "nuxt dev --extends docus",
-    "build": "nuxt build --extends docus",
-    "generate": "nuxt generate --extends docus"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "docus": "latest",
-    "better-sqlite3": "^12.5.0",
-    "nuxt": "^4.2.2"
+    "@astrojs/starlight": "^0.36.0",
+    "astro": "^5.16.0",
+    "sharp": "^0.34.0",
+    "starlight-theme-nova": "^0.11.11"
   }
 }
