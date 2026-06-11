@@ -15,6 +15,13 @@
   --sm-radius: 0.7rem;
   --sm-gridline: var(--sl-color-gray-5);
 
+  /* Custom <select> chevron, inlined so it inherits the accent in each theme. */
+  --sm-select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%236364ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+
+  /* Faceted Ruby gem for the Ruby component card — the recognizable cut-gem
+     mark in place of Seti's generic blob glyph. Red reads in both themes. */
+  --sm-ruby-gem: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d4302a' d='M6 3H18L22 9L12 22L2 9Z'/%3E%3Cg fill='none' stroke='%23721612' stroke-width='0.9' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M2 9H22'/%3E%3Cpath d='M6 3L8.5 9L12 22'/%3E%3Cpath d='M18 3L15.5 9L12 22'/%3E%3Cpath d='M8.5 9H15.5'/%3E%3C/g%3E%3C/svg%3E");
+
   /* Shared brand "ink" — white reading into the purple accent. Resolves
      per-theme because --sl-color-white flips to dark text in light mode. */
   --brand-text-gradient: linear-gradient(
@@ -38,6 +45,8 @@
   --sm-no-bg: rgba(185, 28, 28, 0.09);
 
   --sm-gridline: var(--sl-color-gray-6);
+
+  --sm-select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%234a4bd6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
 }
 
 /* ---- Site header ------------------------------------------------------ */
@@ -169,6 +178,18 @@
 }
 .card .icon {
   border-radius: 0.55rem;
+}
+
+/* Swap the Ruby card's generic Seti glyph for a proper faceted gem. We keep
+   Starlight's bordered icon box and paint the gem as its background, then make
+   the underlying <path> transparent (it inherits `currentColor`) so only the
+   gem shows. Matched via the card's own link so it's order-independent. */
+.card:has(.card-link[href="/components/ruby/"]) .icon {
+  color: transparent;
+  background-image: var(--sm-ruby-gem);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1em;
 }
 
 /* Whole-card link: an empty anchor whose ::after overlay covers the card, so
@@ -497,18 +518,35 @@
   color: var(--sl-color-gray-2);
 }
 .sm-field select {
-  padding: 0.4rem 0.5rem;
+  /* Drop the OS widget styling so the control matches the site chrome in every
+     browser, then re-add our own chevron on the right. */
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0.45rem 2rem 0.45rem 0.6rem;
   border: 1px solid var(--sm-gridline);
-  border-radius: 0.4rem;
-  background: var(--sl-color-bg);
+  border-radius: 0.45rem;
+  background-color: var(--sl-color-bg);
+  background-image: var(--sm-select-chevron);
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  background-size: 0.7rem;
   color: var(--sl-color-white);
   font: inherit;
   font-variant-numeric: tabular-nums;
   cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+.sm-field select:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--sl-color-accent) 55%, var(--sm-gridline));
+  background-color: var(--sl-color-gray-6);
 }
 .sm-field select:focus-visible {
-  outline: 2px solid var(--sl-color-accent);
-  outline-offset: 1px;
+  outline: none;
+  border-color: var(--sl-color-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--sl-color-accent) 30%, transparent);
 }
 
 .sm-advisor-result,
