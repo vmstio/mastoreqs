@@ -10,10 +10,6 @@ export default defineConfig({
       title: 'Mastodon Requirements',
       description: 'Community maintained support matrix of recent Mastodon releases and their underlying dependencies.',
       favicon: '/favicon.svg',
-      logo: {
-        src: './src/assets/mastodon.svg',
-        alt: 'Mastodon',
-      },
       customCss: ['./src/styles/custom.css'],
       head: [
         {

@@ -7,8 +7,6 @@
       .muted  { fill: #6c7086; }
       .ruby   { fill: #f38ba8; }
       .accent { fill: #8b8cff; }
-      @keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
-      .cursor { animation: blink 1.1s steps(1) infinite; }
     </style>
   </defs>
 
@@ -29,28 +27,23 @@
 
   <!-- Output -->
   <g class="mono" font-size="16">
-    <text x="32" y="88"><tspan class="prompt">$ </tspan><tspan class="cmd">ruby -v</tspan></text>
-    <text x="32" y="116" class="muted">ruby 3.3.6  <tspan class="muted"># target → </tspan><tspan class="ruby">3.4.2</tspan></text>
+    <text x="32" y="84"><tspan class="prompt">$ </tspan><tspan class="cmd">ruby -v</tspan></text>
+    <text x="32" y="112" class="muted">ruby 3.3.6</text>
 
-    <text x="32" y="150"><tspan class="prompt">$ </tspan><tspan class="cmd">rbenv install 3.4.2</tspan></text>
+    <text x="32" y="140"><tspan class="prompt">$ </tspan><tspan class="cmd">rbenv install -s "$(rbenv local)"</tspan></text>
+
+    <!-- Simulated ruby-build output -->
+    <text x="32" y="168" class="muted">Downloading ruby-<tspan class="ruby">4.0.5</tspan>.tar.gz...</text>
+    <text x="32" y="196" class="muted" font-size="14">-&gt; https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.5.tar.gz</text>
 
     <!-- Spinner + installing line -->
-    <g transform="translate(40,176)">
+    <g transform="translate(40,219)">
       <circle cx="0" cy="0" r="7" fill="none" stroke="#313244" stroke-width="2.5"/>
       <path d="M0,-7 A7,7 0 0 1 7,0" fill="none" stroke="#8b8cff" stroke-width="2.5" stroke-linecap="round">
         <animateTransform attributeName="transform" type="rotate" values="0;360" dur="0.8s" repeatCount="indefinite"/>
       </path>
     </g>
-    <text x="58" y="181" class="muted">Installing ruby-3.4.2...</text>
-
-    <!-- Progress bar -->
-    <rect x="32" y="202" width="360" height="12" rx="6" fill="#313244"/>
-    <rect x="32" y="202" width="245" height="12" rx="6" fill="#6364ff"/>
-    <text x="404" y="213" class="accent" font-size="14">68%</text>
-
-    <!-- Prompt with blinking block cursor -->
-    <text x="32" y="252"><tspan class="prompt">$ </tspan></text>
-    <rect class="cursor" x="49" y="238" width="9" height="18" rx="1" fill="#cdd6f4"/>
+    <text x="58" y="224" class="muted">Installing ruby-<tspan class="ruby">4.0.5</tspan>...</text>
   </g>
   </g>
 </svg>
