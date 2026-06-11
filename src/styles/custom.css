@@ -468,6 +468,28 @@
   background: var(--sl-color-gray-6);
 }
 
+/* "I use the container image" toggle: spans the full globals row beneath the
+   from/to picks it shares a card with. */
+.uadv-container-field {
+  flex: 1 0 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin-top: 0.2rem;
+  cursor: pointer;
+  font-size: var(--sl-text-sm);
+}
+.uadv-container-field input {
+  margin-top: 0.15rem;
+  flex: none;
+  cursor: pointer;
+}
+.uadv-container-field small {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--sl-color-gray-3);
+}
+
 .uadv-global-note {
   margin-top: 0.9rem;
 }
@@ -515,4 +537,10 @@
 .uadv-section .sm-field select:disabled {
   opacity: 0.55;
   cursor: not-allowed;
+}
+
+/* A dependency the container image manages: dimmed controls to signal there's
+   nothing to pick, while the "bundled" advice stays at full contrast. */
+.uadv-section.is-managed .uadv-controls {
+  opacity: 0.55;
 }

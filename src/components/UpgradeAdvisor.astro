@@ -37,11 +37,14 @@ interface Section {
   optional?: boolean;
   /** Image processor: enables ImageMagick → libvips migration awareness. */
   image?: boolean;
+  /** Bundled in the official Mastodon container image, so it's managed by the
+   *  image rather than installed separately. */
+  container?: boolean;
 }
 
 const sections: Section[] = [
-  { id: 'ruby', title: 'Ruby', name: 'Ruby', key: 'ruby:ruby' },
-  { id: 'node', title: 'Node', name: 'Node', key: 'node:node' },
+  { id: 'ruby', title: 'Ruby', name: 'Ruby', key: 'ruby:ruby', container: true },
+  { id: 'node', title: 'Node', name: 'Node', key: 'node:node', container: true },
   { id: 'postgres', title: 'PostgreSQL', name: 'PostgreSQL', key: 'postgres:postgres' },
   {
     id: 'cache',
@@ -58,12 +61,13 @@ const sections: Section[] = [
     title: 'Image processing',
     providerLabel: 'Image processor',
     image: true,
+    container: true,
     providers: [
       { label: 'libvips', key: 'libvips:libvips' },
       { label: 'ImageMagick', key: 'libvips:imagemagick' },
     ],
   },
-  { id: 'ffmpeg', title: 'FFmpeg', name: 'FFmpeg', key: 'ffmpeg:ffmpeg' },
+  { id: 'ffmpeg', title: 'FFmpeg', name: 'FFmpeg', key: 'ffmpeg:ffmpeg', container: true },
   {
     id: 'search',
     title: 'Search',
@@ -112,6 +116,13 @@ const sections: Section[] = [
         ))}
       </select>
     </label>
+    <label class="uadv-container-field">
+      <input type="checkbox" class="uadv-container" />
+      <span>
+        I use the official Mastodon container image
+        <small>Ruby, Node, libvips, and FFmpeg ship inside the image.</small>
+      </span>
+    </label>
   </div>
 
   <p class="uadv-global-note is-required" role="status" aria-live="polite" hidden></p>
@@ -126,6 +137,7 @@ const sections: Section[] = [
           data-name={s.name ?? ''}
           data-image={s.image ? 'true' : ''}
           data-optional={s.optional ? 'true' : ''}
+          data-container={s.container ? 'true' : ''}
         >
           <h3>{s.title}</h3>
           <div class="uadv-controls">

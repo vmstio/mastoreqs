@@ -12,6 +12,7 @@
 
   var fromSel = root.querySelector('.uadv-from');
   var toSel = root.querySelector('.uadv-to');
+  var containerChk = root.querySelector('.uadv-container');
   var globalNote = root.querySelector('.uadv-global-note');
   var sections = Array.prototype.slice.call(
     root.querySelectorAll('.uadv-section')
@@ -108,11 +109,35 @@
     globalNote.hidden = true;
     globalNote.textContent = '';
 
+    var containerMode = containerChk && containerChk.checked;
+
     sections.forEach(function (sec) {
       var prov = sec.querySelector('.uadv-provider');
       var cur = sec.querySelector('.uadv-cur');
       var key = keyFor(sec);
       var optional = sec.dataset.optional === 'true';
+
+      // The official container image bundles Ruby, Node, libvips, and
+      // FFmpeg, so the image manages them — disable the controls and skip the
+      // per-dependency advice while it's selected.
+      if (containerMode && sec.dataset.container === 'true') {
+        sec.classList.add('is-managed');
+        if (prov) prov.disabled = true;
+        cur.disabled = true;
+        setResult(sec, 'ok', 'Bundled in the official Mastodon container image — ' +
+          'upgrading the image updates this for you. No separate action needed.');
+        return;
+      }
+      sec.classList.remove('is-managed');
+      // Restore the normal enabled state: a provider select is always usable,
+      // its version select only once a backend is chosen; single sections keep
+      // their version select enabled.
+      if (prov) {
+        prov.disabled = false;
+        cur.disabled = !prov.value;
+      } else {
+        cur.disabled = false;
+      }
 
       if (prov && key === '') {
         setResult(sec, 'neutral', optional
@@ -160,5 +185,6 @@
 
   fromSel.addEventListener('change', update);
   toSel.addEventListener('change', update);
+  if (containerChk) containerChk.addEventListener('change', update);
   update();
 })();
