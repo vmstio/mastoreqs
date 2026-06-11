@@ -1,5 +1,5 @@
 // Shared upgrade-advice logic, used by both the per-page SupportMatrix advisors
-// (matrix.js) and the combined Upgrade Advisor (upgrade-advisor.js). Pure: it
+// (matrix.js) and the combined Upgrade Advisor (advisor.js). Pure: it
 // takes plain data and returns a { kind, msg } result, with no DOM access, so
 // the two surfaces can never give conflicting guidance.
 (function () {

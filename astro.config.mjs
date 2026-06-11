@@ -17,7 +17,7 @@ export default defineConfig({
       },
       head: [
         // Order matters: advisor-core defines window.MastoAdvisor, which both
-        // matrix.js and upgrade-advisor.js consume. All defer, so they run in
+        // matrix.js and advisor.js consume. All defer, so they run in
         // document order.
         {
           tag: 'script',
@@ -29,7 +29,7 @@ export default defineConfig({
         },
         {
           tag: 'script',
-          attrs: { src: '/scripts/upgrade-advisor.js', defer: true },
+          attrs: { src: '/scripts/advisor.js', defer: true },
         },
       ],
       social: [
@@ -49,7 +49,7 @@ export default defineConfig({
           label: 'Overview',
           items: [
             { label: 'Home', link: '/' },
-            { label: 'Upgrade Advisor', link: '/upgrade-advisor/' },
+            { label: 'Upgrade Advisor', link: '/advisor/' },
             { label: 'Support Lifecycle', link: '/lifecycle/' },
           ],
         },
