@@ -1,5 +1,5 @@
 {
-  "mastodonVersions": ["4.6", "4.5", "4.4", "4.3", "4.2", "4.1", "4.0", "3.5"],
+  "mastodonVersions": ["4.6", "4.5", "4.4", "4.3", "4.2", "4.1", "4.0", "3.5", "3.4"],
   "lifecycle": [
     { "version": "4.6", "status": "Main Development Branch", "endOfLife": null, "state": "development" },
     { "version": "4.5", "status": "Latest Release Branch", "endOfLife": null, "state": "supported" },
@@ -18,14 +18,14 @@
           "id": "ruby",
           "label": null,
           "rows": [
-            { "version": "4.0", "support": ["yes", null, null, null, null, null, null, null] },
-            { "version": "3.4", "support": ["yes", "yes", "yes", null, null, null, null, null] },
-            { "version": "3.3", "support": ["yes", "yes", "yes", "yes", null, null, null, null] },
-            { "version": "3.2", "support": ["no", "warn", "warn", "warn", "warn", "warn", null, null] },
-            { "version": "3.1", "support": ["no", "no", "no", "warn", "warn", "warn", "no", "no"] },
-            { "version": "3.0", "support": ["no", "no", "no", "no", "warn", "warn", "warn", "warn"] },
-            { "version": "2.7", "support": ["no", "no", "no", "no", "no", "warn", "warn", "warn"] },
-            { "version": "2.6", "support": ["no", "no", "no", "no", "no", "no", "no", "warn"] }
+            { "version": "4.0", "support": ["yes", null, null, null, null, null, null, null, null] },
+            { "version": "3.4", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
+            { "version": "3.3", "support": ["yes", "yes", "yes", "yes", null, null, null, null, null] },
+            { "version": "3.2", "support": ["no", "warn", "warn", "warn", "warn", "warn", null, null, null] },
+            { "version": "3.1", "support": ["no", "no", "no", "warn", "warn", "warn", "no", "no", null] },
+            { "version": "3.0", "support": ["no", "no", "no", "no", "warn", "warn", "warn", "warn", "warn"] },
+            { "version": "2.7", "support": ["no", "no", "no", "no", "no", "warn", "warn", "warn", "warn"] },
+            { "version": "2.6", "support": ["no", "no", "no", "no", "no", "no", "no", "warn", "warn"] }
           ]
         }
       ]
@@ -37,14 +37,14 @@
           "id": "node",
           "label": null,
           "rows": [
-            { "version": "26.x", "support": ["yes", null, null, null, null, null, null, null] },
-            { "version": "24.x", "support": ["yes", "yes", "yes", null, null, null, null, null] },
-            { "version": "22.x", "support": ["yes", "yes", "yes", "yes", null, null, null, null] },
-            { "version": "20.x", "support": ["no", "warn", "warn", "warn", "warn", null, null, null] },
-            { "version": "18.x", "support": ["no", "no", "no", "warn", "warn", "warn", "no", null] },
-            { "version": "16.x", "support": ["no", "no", "no", "no", "warn", "warn", "warn", "warn"] },
-            { "version": "14.x", "support": ["no", "no", "no", "no", "no", "warn", "warn", "warn"] },
-            { "version": "12.x", "support": ["no", "no", "no", "no", "no", "no", "warn", "warn"] }
+            { "version": "26.x", "support": ["yes", null, null, null, null, null, null, null, null] },
+            { "version": "24.x", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
+            { "version": "22.x", "support": ["yes", "yes", "yes", "yes", null, null, null, null, null] },
+            { "version": "20.x", "support": ["no", "warn", "warn", "warn", "warn", null, null, null, null] },
+            { "version": "18.x", "support": ["no", "no", "no", "warn", "warn", "warn", "no", null, null] },
+            { "version": "16.x", "support": ["no", "no", "no", "no", "warn", "warn", "warn", "warn", "warn"] },
+            { "version": "14.x", "support": ["no", "no", "no", "no", "no", "warn", "warn", "warn", "warn"] },
+            { "version": "12.x", "support": ["no", "no", "no", "no", "no", "no", "warn", "warn", "warn"] }
           ]
         }
       ]
@@ -56,17 +56,17 @@
           "id": "postgres",
           "label": null,
           "rows": [
-            { "version": "18.x", "support": ["yes", "yes", null, null, null, null, null, null] },
-            { "version": "17.x", "support": ["yes", "yes", "yes", null, null, null, null, null] },
-            { "version": "16.x", "support": ["yes", "yes", "yes", null, null, null, null, null] },
-            { "version": "15.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", null] },
-            { "version": "14.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", "warn"] },
-            { "version": "13.x", "support": ["no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "12.x", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "11.x", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "10.x", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "9.6", "support": ["no", "no", "no", "no", "no", "no", "no", "warn"] },
-            { "version": "9.5", "support": ["no", "no", "no", "no", "no", "no", "no", "warn"] }
+            { "version": "18.x", "support": ["yes", "yes", null, null, null, null, null, null, null] },
+            { "version": "17.x", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
+            { "version": "16.x", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
+            { "version": "15.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", null, null] },
+            { "version": "14.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", "warn", null] },
+            { "version": "13.x", "support": ["no", "no", "warn", "warn", "warn", "warn", "warn", "warn", "warn"] },
+            { "version": "12.x", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] },
+            { "version": "11.x", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] },
+            { "version": "10.x", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] },
+            { "version": "9.6", "support": ["no", "no", "no", "no", "no", "no", "no", "warn", "warn"] },
+            { "version": "9.5", "support": ["no", "no", "no", "no", "no", "no", "no", "warn", "warn"] }
           ]
         }
       ]
@@ -78,35 +78,35 @@
           "id": "valkey",
           "label": "Valkey",
           "rows": [
-            { "version": "9.1", "support": ["yes", null, null, null, null, null, null, null] },
-            { "version": "9.0", "support": ["yes", "yes", null, null, null, null, null, null] },
-            { "version": "8.1", "support": ["yes", "yes", "yes", null, null, null, null, null] },
-            { "version": "8.0", "support": ["yes", "yes", "yes", null, null, null, null, null] },
-            { "version": "7.2", "support": ["yes", "yes", "yes", null, null, null, null, null] }
+            { "version": "9.1", "support": ["yes", null, null, null, null, null, null, null, null] },
+            { "version": "9.0", "support": ["yes", "yes", null, null, null, null, null, null, null] },
+            { "version": "8.1", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
+            { "version": "8.0", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
+            { "version": "7.2", "support": ["yes", "yes", "yes", null, null, null, null, null, null] }
           ]
         },
         {
           "id": "redis",
           "label": "Redis",
           "rows": [
-            { "version": "8.8", "support": ["yes", null, null, null, null, null, null, null] },
-            { "version": "8.6", "support": ["yes", null, null, null, null, null, null, null] },
-            { "version": "8.4", "support": ["yes", "yes", null, null, null, null, null, null] },
-            { "version": "8.2", "support": ["warn", "warn", null, null, null, null, null, null] },
-            { "version": "8.0", "support": ["warn", "warn", "warn", null, null, null, null, null] },
-            { "version": "7.4", "support": ["yes", "yes", "yes", null, null, null, null, null] },
-            { "version": "7.2", "support": ["yes", "yes", "yes", "yes", null, null, null, null] },
-            { "version": "7.0", "support": ["warn", "warn", "warn", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "6.x", "support": ["no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "5.x", "support": ["no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "4.x", "support": ["no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] }
+            { "version": "8.8", "support": ["yes", null, null, null, null, null, null, null, null] },
+            { "version": "8.6", "support": ["yes", null, null, null, null, null, null, null, null] },
+            { "version": "8.4", "support": ["yes", "yes", null, null, null, null, null, null, null] },
+            { "version": "8.2", "support": ["warn", "warn", null, null, null, null, null, null, null] },
+            { "version": "8.0", "support": ["warn", "warn", "warn", null, null, null, null, null, null] },
+            { "version": "7.4", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
+            { "version": "7.2", "support": ["yes", "yes", "yes", "yes", null, null, null, null, null] },
+            { "version": "7.0", "support": ["warn", "warn", "warn", "warn", "warn", "warn", "warn", null, null] },
+            { "version": "6.x", "support": ["no", "no", "warn", "warn", "warn", "warn", "warn", "warn", null] },
+            { "version": "5.x", "support": ["no", "no", "warn", "warn", "warn", "warn", "warn", "warn", "warn"] },
+            { "version": "4.x", "support": ["no", "no", "warn", "warn", "warn", "warn", "warn", "warn", "warn"] }
           ]
         },
         {
           "id": "dragonfly",
           "label": "Dragonfly",
           "rows": [
-            { "version": "1.26.3+", "support": ["yes", "yes", "no", "no", "no", "no", "no", "no"] }
+            { "version": "1.26.3+", "support": ["yes", "yes", "no", "no", "no", "no", "no", "no", "no"] }
           ]
         }
       ]
@@ -118,21 +118,21 @@
           "id": "libvips",
           "label": "libvips",
           "rows": [
-            { "version": "8.18", "support": ["yes", null, null, null, null, null, null, null] },
-            { "version": "8.17", "support": ["yes", "yes", null, null, null, null, null, null] },
-            { "version": "8.16", "support": ["yes", "yes", "yes", null, null, null, null, null] },
-            { "version": "8.15", "support": ["yes", "yes", "yes", null, null, null, null, null] },
-            { "version": "8.14", "support": ["yes", "yes", "yes", null, null, null, null, null] },
-            { "version": "8.13", "support": ["yes", "yes", "yes", null, null, null, null, null] }
+            { "version": "8.18", "support": ["yes", null, null, null, null, null, null, null, null] },
+            { "version": "8.17", "support": ["yes", "yes", null, null, null, null, null, null, null] },
+            { "version": "8.16", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
+            { "version": "8.15", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
+            { "version": "8.14", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
+            { "version": "8.13", "support": ["yes", "yes", "yes", null, null, null, null, null, null] }
           ]
         },
         {
           "id": "imagemagick",
           "label": "ImageMagick",
           "rows": [
-            { "version": "7.1", "support": ["no", "warn", "warn", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "7.0", "support": ["no", "warn", "warn", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "6.9", "support": ["no", "warn", "warn", "yes", "yes", "yes", "yes", "yes"] }
+            { "version": "7.1", "support": ["no", "warn", "warn", "yes", "yes", "yes", "yes", "yes", "yes"] },
+            { "version": "7.0", "support": ["no", "warn", "warn", "yes", "yes", "yes", "yes", "yes", "yes"] },
+            { "version": "6.9", "support": ["no", "warn", "warn", "yes", "yes", "yes", "yes", "yes", "yes"] }
           ]
         }
       ]
@@ -144,24 +144,24 @@
           "id": "ffmpeg",
           "label": null,
           "rows": [
-            { "version": "8.1", "support": ["yes", null, null, null, null, null, null, null] },
-            { "version": "8.0", "support": ["yes", "yes", null, null, null, null, null, null] },
-            { "version": "7.1", "support": ["yes", "yes", "yes", "yes", null, null, null, null] },
-            { "version": "7.0", "support": ["yes", "yes", "yes", "yes", null, null, null, null] },
-            { "version": "6.1", "support": ["yes", "yes", "yes", "yes", "yes", null, null, null] },
-            { "version": "6.0", "support": ["warn", "warn", "warn", "warn", "warn", "warn", "warn", null] },
-            { "version": "5.1", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "5.0", "support": ["warn", "warn", "warn", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "4.4", "support": ["no", "yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "4.3", "support": ["no", "yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "4.2", "support": ["no", "yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "4.1", "support": ["no", "warn", "warn", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "4.0", "support": ["no", "warn", "warn", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "3.4", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "3.3", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "3.2", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "3.1", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "3.0", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn"] }
+            { "version": "8.1", "support": ["yes", null, null, null, null, null, null, null, null] },
+            { "version": "8.0", "support": ["yes", "yes", null, null, null, null, null, null, null] },
+            { "version": "7.1", "support": ["yes", "yes", "yes", "yes", null, null, null, null, null] },
+            { "version": "7.0", "support": ["yes", "yes", "yes", "yes", null, null, null, null, null] },
+            { "version": "6.1", "support": ["yes", "yes", "yes", "yes", "yes", null, null, null, null] },
+            { "version": "6.0", "support": ["warn", "warn", "warn", "warn", "warn", "warn", "warn", null, null] },
+            { "version": "5.1", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", null, null] },
+            { "version": "5.0", "support": ["warn", "warn", "warn", "warn", "warn", "warn", "warn", null, null] },
+            { "version": "4.4", "support": ["no", "yes", "yes", "yes", "yes", "yes", "yes", "yes", null] },
+            { "version": "4.3", "support": ["no", "yes", "yes", "yes", "yes", "yes", "yes", "yes", null] },
+            { "version": "4.2", "support": ["no", "yes", "yes", "yes", "yes", "yes", "yes", "yes", null] },
+            { "version": "4.1", "support": ["no", "warn", "warn", "warn", "warn", "warn", "warn", "warn", null] },
+            { "version": "4.0", "support": ["no", "warn", "warn", "warn", "warn", "warn", "warn", "warn", null] },
+            { "version": "3.4", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] },
+            { "version": "3.3", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] },
+            { "version": "3.2", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] },
+            { "version": "3.1", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] },
+            { "version": "3.0", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] }
       
           ]
         }
@@ -174,19 +174,18 @@
           "id": "elasticsearch",
           "label": "Elasticsearch",
           "rows": [
-            { "version": "9.x", "support": ["yes", "yes", null, null, null, null, null] },
-            { "version": "8.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "7.x", "support": ["warn", "warn", "warn", "warn", "warn", "warn", "warn"] },
-            { "version": "6.x", "support": ["no", "no", "no", "no", "no", "no", "no"] }
+            { "version": "9.x", "support": ["yes", "yes", null, null, null, null, null, null, null] },
+            { "version": "8.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", "no", null] },
+            { "version": "7.x", "support": ["warn", "warn", "warn", "warn", "warn", "warn", "warn", "warn", "warn"] },
+            { "version": "6.x", "support": ["no", "no", "no", "no", "no", "no", "no", "no", "warn"] }
           ]
         },
         {
           "id": "opensearch",
           "label": "OpenSearch",
           "rows": [
-            { "version": "3.x", "support": ["yes", "yes", null, null, null, null, null] },
-            { "version": "2.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "1.x", "support": ["no", "no", "no", "no", "no", "no", "no"] }
+            { "version": "3.x", "support": ["yes", "yes", null, null, null, null, null, null, null] },
+            { "version": "2.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", null, null] }
           ]
         }
       ]
@@ -198,25 +197,25 @@
           "id": "nginx",
           "label": "Nginx",
           "rows": [
-            { "version": "1.31", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "1.30", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "1.29", "support": ["no", "no", "no", "no", "no", "no", "no"] }
+            { "version": "1.31", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
+            { "version": "1.30", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
+            { "version": "1.29", "support": ["no", "no", "no", "no", "no", "no", "no", "no", "no"] }
           ]
         },
         {
           "id": "caddy",
           "label": "Caddy",
           "rows": [
-            { "version": "2.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "1.x", "support": ["no", "no", "no", "no", "no", "no", "no"] }
+            { "version": "2.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
+            { "version": "1.x", "support": ["no", "no", "no", "no", "no", "no", "no", "no", "no"] }
           ]
         },
         {
           "id": "apache",
           "label": "Apache",
           "rows": [
-            { "version": "2.4", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "2.2", "support": ["no", "no", "no", "no", "no", "no", "no"] }
+            { "version": "2.4", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
+            { "version": "2.2", "support": ["no", "no", "no", "no", "no", "no", "no", "no", "no"] }
           ]
         }
       ]
