@@ -9,16 +9,11 @@ Plan a Mastodon upgrade across all of its dependencies in one place. Pick your c
 target Mastodon versions, tell the advisor which backends you run and the versions you have,
 and it will flag anything you need to change — and in what order.
 
-<UpgradeAdvisor />
-
 :::tip
 Choose the **cache**, **image processor**, and **search** backend you actually run. Search
-is optional; leave it set to *Not used* if you don't run full-text search. ImageMagick is
-deprecated from Mastodon 4.4 and removed in 4.6, so the advisor will steer you toward
-libvips when it applies.
+is optional; leave it set to *Not used* if you don't run full-text search.
 :::
 
-Each dependency also has its own focused advisor if you want to dig into a single component:
-[Ruby](/components/ruby/), [Node](/components/node/), [PostgreSQL](/components/postgres/),
-[Cache](/components/cache/), [Images](/components/libvips/), [FFmpeg](/components/ffmpeg/),
-[Search](/components/search/), and [Ingress](/components/nginx/).
+<UpgradeAdvisor />
+
+
