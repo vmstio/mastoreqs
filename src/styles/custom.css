@@ -1,0 +1,363 @@
+:root {
+  /* Mastodon-flavored purple accent. */
+  --sl-color-accent-low: #281c52;
+  --sl-color-accent: #6364ff;
+  --sl-color-accent-high: #c1c2ff;
+
+  /* Support-state palette (tuned for the default dark theme). */
+  --sm-yes: #4ade80;
+  --sm-yes-bg: rgba(74, 222, 128, 0.16);
+  --sm-warn: #fde047;
+  --sm-warn-bg: rgba(250, 204, 21, 0.22);
+  --sm-no: #f87171;
+  --sm-no-bg: rgba(248, 113, 113, 0.13);
+
+  --sm-radius: 0.7rem;
+  --sm-gridline: var(--sl-color-gray-5);
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: #e0e0ff;
+  --sl-color-accent: #4a4bd6;
+  --sl-color-accent-high: #20215e;
+
+  --sm-yes: #15803d;
+  --sm-yes-bg: rgba(21, 128, 61, 0.12);
+  --sm-warn: #a16207;
+  --sm-warn-bg: rgba(234, 179, 8, 0.24);
+  --sm-no: #b91c1c;
+  --sm-no-bg: rgba(185, 28, 28, 0.09);
+
+  --sm-gridline: var(--sl-color-gray-6);
+}
+
+/* Visually-hidden helper for screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Support matrix --------------------------------------------------- */
+
+.support-matrix {
+  margin: 1.5rem 0;
+}
+
+.sm-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--sm-gridline);
+  border-radius: var(--sm-radius);
+  background: var(--sl-color-bg);
+  /* Fade the leading/trailing edges as a scroll affordance on mobile. */
+  -webkit-overflow-scrolling: touch;
+}
+
+.support-matrix table {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  min-width: 32rem;
+  margin: 0;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  font-size: var(--sl-text-sm);
+}
+
+.support-matrix th,
+.support-matrix td {
+  padding: 0;
+  border: 0;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  height: 2.6rem;
+}
+
+/* Light gridlines between data cells only. */
+.support-matrix tbody td,
+.support-matrix tbody .sm-row-head {
+  border-top: 1px solid var(--sm-gridline);
+}
+
+/* First column is narrower than the data columns. */
+.support-matrix col,
+.sm-corner,
+.sm-row-head {
+  width: 4.75rem;
+}
+
+/* Header band */
+.support-matrix thead th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: var(--sl-color-gray-6);
+  color: var(--sl-color-white);
+  border-bottom: 2px solid var(--sm-gridline);
+}
+
+/* Row headers (component versions) and the corner cell. */
+.sm-row-head,
+.sm-corner {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  padding: 0 0.6rem;
+  background: var(--sl-color-gray-6);
+  color: var(--sl-color-white);
+  font-weight: 600;
+  border-right: 1px solid var(--sm-gridline);
+}
+.sm-corner {
+  z-index: 4;
+}
+
+/* Lifecycle table reads as prose columns, not a square matrix. */
+.lifecycle-table table {
+  table-layout: auto;
+}
+.lifecycle-table tbody td {
+  padding: 0 0.9rem;
+  text-align: left;
+}
+.lifecycle-table .sm-center {
+  text-align: center;
+  width: 4rem;
+}
+
+/* ---- Column focus buttons --------------------------------------------- */
+
+.sm-version-head {
+  padding: 0.3rem;
+}
+.sm-version-btn {
+  width: 100%;
+  padding: 0.35rem 0.4rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.4rem;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+.sm-version-btn:hover {
+  background: var(--sl-color-gray-5);
+}
+.sm-version-btn:focus-visible {
+  outline: 2px solid var(--sl-color-accent);
+  outline-offset: 1px;
+}
+.sm-version-btn[aria-pressed='true'] {
+  background: var(--sl-color-accent);
+  color: #fff;
+  border-color: var(--sl-color-accent);
+}
+
+/* ---- State badges ----------------------------------------------------- */
+
+.sm-mark {
+  display: inline-grid;
+  place-items: center;
+  vertical-align: middle;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+/* Optically nudge the exclamation, which sits high in its glyph box. */
+.sm-cell[data-state='warn'] .sm-mark,
+.sm-legend-item[data-state='warn'] .sm-mark {
+  font-size: 0.9rem;
+}
+.sm-cell[data-state='yes'] .sm-mark,
+.sm-cell[data-state='supported'] .sm-mark,
+.sm-cell[data-state='development'] .sm-mark {
+  background: var(--sm-yes-bg);
+  color: var(--sm-yes);
+}
+.sm-cell[data-state='warn'] .sm-mark {
+  background: var(--sm-warn-bg);
+  color: var(--sm-warn);
+}
+.sm-cell[data-state='no'] .sm-mark,
+.sm-cell[data-state='eol'] .sm-mark {
+  /* Negatives are de-emphasised via the muted red + faint fill (not opacity,
+     which is reserved for the column-focus dimming). */
+  background: var(--sm-no-bg);
+  color: var(--sm-no);
+}
+
+/* "Not applicable" cells: a faint dash, not an empty void. */
+.sm-cell[data-state='na']::before {
+  content: '–';
+  color: var(--sl-color-gray-4);
+  opacity: 0.6;
+}
+
+/* ---- Interaction states ----------------------------------------------- */
+
+/* Row hover: gently tint the whole row. */
+.sm-row-hover td,
+.sm-row-hover .sm-row-head {
+  background: var(--sl-color-gray-6);
+}
+
+/* Column focus: dim the other columns' badges so the selected version stands
+   out on its own — no extra fill or border on the focused cells. */
+.is-focusing tbody td .sm-mark {
+  opacity: 0.3;
+  transition: opacity 0.15s ease;
+}
+.is-focusing tbody td.sm-col-focused .sm-mark {
+  opacity: 1;
+}
+.is-focusing thead .sm-version-btn:not(.sm-col-focused) {
+  opacity: 0.45;
+}
+
+/* ---- Legend ----------------------------------------------------------- */
+
+.sm-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  margin-top: 0.75rem;
+  font-size: var(--sl-text-sm);
+  color: var(--sl-color-gray-2);
+}
+.sm-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.sm-legend-item .sm-mark {
+  width: 1.35rem;
+  height: 1.35rem;
+  font-size: 0.72rem;
+}
+.sm-legend-item[data-state='yes'] .sm-mark,
+.sm-legend-item[data-state='supported'] .sm-mark {
+  background: var(--sm-yes-bg);
+  color: var(--sm-yes);
+}
+.sm-legend-item[data-state='warn'] .sm-mark {
+  background: var(--sm-warn-bg);
+  color: var(--sm-warn);
+}
+.sm-legend-item[data-state='no'] .sm-mark,
+.sm-legend-item[data-state='eol'] .sm-mark {
+  background: var(--sm-no-bg);
+  color: var(--sm-no);
+}
+
+/* ---- Upgrade advisor -------------------------------------------------- */
+
+.sm-advisor {
+  margin-top: 1rem;
+  border: 1px solid var(--sm-gridline);
+  border-radius: var(--sm-radius);
+  background: var(--sl-color-gray-6);
+}
+/* The advisor sits inside a `.not-content` wrapper, so Starlight's summary
+   marker styles don't apply — hide the native marker ourselves. `display: block`
+   plus the marker rules removes the disclosure triangle across browsers. */
+.sm-advisor-summary {
+  display: block;
+  padding: 0.6rem 0.9rem;
+  font-size: var(--sl-text-sm);
+  font-weight: 600;
+  color: var(--sl-color-white);
+  cursor: pointer;
+  list-style: none;
+}
+.sm-advisor-summary::marker,
+.sm-advisor-summary::-webkit-details-marker {
+  display: none;
+}
+.sm-advisor-summary-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.sm-advisor-summary:focus-visible {
+  outline: 2px solid var(--sl-color-accent);
+  outline-offset: -2px;
+  border-radius: var(--sm-radius);
+}
+.sm-advisor-caret {
+  display: inline-block;
+  transition: transform 0.15s ease;
+  color: var(--sl-color-gray-3);
+}
+.sm-advisor[open] .sm-advisor-caret {
+  transform: rotate(90deg);
+}
+.sm-advisor[open] .sm-advisor-summary {
+  border-bottom: 1px solid var(--sm-gridline);
+}
+
+.sm-advisor-body {
+  padding: 0.9rem;
+}
+.sm-advisor-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.sm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: var(--sl-text-sm);
+}
+.sm-field > span {
+  font-weight: 600;
+  color: var(--sl-color-gray-2);
+}
+.sm-field select {
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--sm-gridline);
+  border-radius: 0.4rem;
+  background: var(--sl-color-bg);
+  color: var(--sl-color-white);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+.sm-field select:focus-visible {
+  outline: 2px solid var(--sl-color-accent);
+  outline-offset: 1px;
+}
+
+.sm-advisor-result {
+  margin: 0.9rem 0 0;
+  padding: 0.7rem 0.85rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid var(--sl-color-gray-4);
+  background: var(--sl-color-bg);
+  font-size: var(--sl-text-sm);
+  line-height: 1.5;
+}
+.sm-advisor-result.is-neutral {
+  color: var(--sl-color-gray-2);
+}
+.sm-advisor-result.is-ok {
+  border-left-color: var(--sm-yes);
+}
+.sm-advisor-result.is-warn {
+  border-left-color: var(--sm-warn);
+}
+.sm-advisor-result.is-required {
+  border-left-color: var(--sm-no);
+}

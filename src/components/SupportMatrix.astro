@@ -1,0 +1,166 @@
+---
+import {
+  getMatrix,
+  mastodonVersions,
+  components,
+  type Support,
+} from '../data/requirements';
+
+interface Props {
+  /** Component id, e.g. "ruby" or "cache". */
+  component: string;
+  /** Matrix id within the component, e.g. "redis". Defaults to the first matrix. */
+  matrix?: string;
+  /** Render the legend beneath the grid. Disable on repeated matrices. */
+  legend?: boolean;
+  /** Render the "Plan an upgrade" advisor beneath the grid. */
+  advisor?: boolean;
+}
+
+const {
+  component,
+  matrix: matrixId,
+  legend = true,
+  advisor = true,
+} = Astro.props;
+const matrix = getMatrix(component, matrixId);
+
+// Display name for the advisor copy: the sub-matrix label (e.g. "Redis") when
+// present, otherwise the component title (e.g. "Ruby").
+const displayName = matrix.label ?? components[component].title;
+
+const labels: Record<Exclude<Support, null>, string> = {
+  yes: 'Supported in this version',
+  warn: 'Deprecated, use with caution',
+  no: 'Not supported in this version',
+};
+
+const symbols: Record<Exclude<Support, null>, string> = {
+  yes: '✓',
+  warn: '!',
+  no: '✕',
+};
+---
+
+<figure
+  class="support-matrix"
+  data-component={component}
+  data-matrix={matrix.id}
+>
+  <div class="sm-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col" class="sm-corner">
+            <span class="sr-only">Component version \ Mastodon version</span>
+          </th>
+          {
+            mastodonVersions.map((v, i) => (
+              <th scope="col" class="sm-version-head">
+                <button
+                  type="button"
+                  class="sm-version-btn"
+                  data-col={i}
+                  data-version={v}
+                  aria-pressed="false"
+                  title={`Focus Mastodon ${v}`}
+                >
+                  {v}
+                </button>
+              </th>
+            ))
+          }
+        </tr>
+      </thead>
+      <tbody>
+        {
+          matrix.rows.map((row) => (
+            <tr>
+              <th scope="row" class="sm-row-head">{row.version}</th>
+              {
+                row.support.map((cell, i) => (
+                  <td
+                    class="sm-cell"
+                    data-col={i}
+                    data-state={cell ?? 'na'}
+                  >
+                    {cell ? (
+                      <span class="sm-mark" role="img" aria-label={labels[cell]}>
+                        {symbols[cell]}
+                      </span>
+                    ) : (
+                      <span class="sr-only">Not applicable</span>
+                    )}
+                  </td>
+                ))
+              }
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  {
+    legend && (
+      <div class="sm-legend">
+        <span class="sm-legend-item" data-state="yes">
+          <span class="sm-mark">✓</span> Supported
+        </span>
+        <span class="sm-legend-item" data-state="warn">
+          <span class="sm-mark">!</span> Deprecated, use with caution
+        </span>
+        <span class="sm-legend-item" data-state="no">
+          <span class="sm-mark">✕</span> Not supported
+        </span>
+      </div>
+    )
+  }
+
+  {
+    advisor && (
+      <div class="not-content">
+      <details class="sm-advisor" data-component-name={displayName}>
+        <summary class="sm-advisor-summary">
+          <span class="sm-advisor-summary-row">
+            <span class="sm-advisor-caret" aria-hidden="true">▸</span>
+            Plan a {displayName} upgrade
+          </span>
+        </summary>
+        <div class="sm-advisor-body">
+          <div class="sm-advisor-controls">
+            <label class="sm-field">
+              <span>Current Mastodon</span>
+              <select class="adv-from">
+                {mastodonVersions.map((v, i) => (
+                  <option value={i} selected={i === 1}>{v}</option>
+                ))}
+              </select>
+            </label>
+            <label class="sm-field">
+              <span>Upgrading to</span>
+              <select class="adv-to">
+                {mastodonVersions.map((v, i) => (
+                  <option value={i} selected={i === 0}>{v}</option>
+                ))}
+              </select>
+            </label>
+            <label class="sm-field">
+              <span>Your {displayName} version</span>
+              <select class="adv-cur">
+                <option value="">Select…</option>
+                {matrix.rows.map((row) => (
+                  <option value={row.version}>{row.version}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <p class="sm-advisor-result is-neutral" role="status" aria-live="polite">
+            Select your current {displayName} version to see upgrade guidance.
+          </p>
+        </div>
+      </details>
+      </div>
+    )
+  }
+</figure>

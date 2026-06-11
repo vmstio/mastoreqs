@@ -1,0 +1,38 @@
+---
+title: Search
+description: Mastodon may optionally use Elasticsearch or OpenSearch for full-text search.
+sidebar:
+  order: 7
+---
+
+import SupportMatrix from '../../../components/SupportMatrix.astro';
+
+Mastodon may optionally utilize an installation of Elasticsearch or OpenSearch.
+Administrators may add either service to enable full-text search features.
+
+:::tip
+Mastodon versions run across the top of the matrix; component versions run down the left
+side. Click any Mastodon version to focus that column.
+:::
+
+## Elasticsearch
+
+<SupportMatrix component="search" matrix="elasticsearch" />
+
+References: [Elasticsearch Maintenance Policy](https://www.elastic.co/support/eol)
+
+```bash title="Terminal"
+# Check running version
+elasticsearch --version
+```
+
+## OpenSearch
+
+<SupportMatrix component="search" matrix="opensearch" />
+
+References: [OpenSearch Maintenance Policy](https://opensearch.org/releases.html#maintenance-policy)
+
+```bash title="Terminal"
+# Check running version
+opensearch --version
+```

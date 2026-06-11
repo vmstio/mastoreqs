@@ -1,0 +1,41 @@
+---
+title: Node
+description: Mastodon requires an installation of Node for asset compilation and the streaming API.
+sidebar:
+  order: 2
+---
+
+import SupportMatrix from '../../../components/SupportMatrix.astro';
+
+Mastodon requires an installation of Node for asset compilation, and administrators must
+ensure a supported Node version is present and configured for operation of the streaming API.
+
+:::tip
+Mastodon versions run across the top of the matrix; component versions run down the left
+side. Click any Mastodon version to focus that column.
+:::
+
+<SupportMatrix component="node" />
+
+References: [Node.js Releases](https://github.com/nodejs/release#release-schedule)
+
+```bash title="Terminal"
+# Check running version
+node -v
+```
+
+:::tip
+Mastodon will have a file called `.nvmrc` in the source code that is the expected target
+version for that release. You should use [nvm](https://github.com/nvm-sh/nvm) to install
+and manage the target Node version.
+:::
+
+:::caution
+Odd numbered major Node.js releases (25.x, etc) should be used with caution and are
+recommended for use only by experienced administrators who are willing/able to provide feedback.
+:::
+
+:::note
+The official Mastodon [container image](https://hub.docker.com/u/tootsuite) will always use
+the correct target version of Node for that release.
+:::

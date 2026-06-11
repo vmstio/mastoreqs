@@ -1,0 +1,52 @@
+---
+import { lifecycle, type LifecycleState } from '../data/requirements';
+
+const stateMeta: Record<LifecycleState, { symbol: string; label: string }> = {
+  development: { symbol: '✓', label: 'Main development branch' },
+  supported: { symbol: '✓', label: 'Supported release of Mastodon' },
+  eol: { symbol: '✕', label: 'End of life, upgrade to latest release' },
+};
+---
+
+<figure class="support-matrix lifecycle-table">
+  <div class="sm-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Mastodon</th>
+          <th scope="col">Status</th>
+          <th scope="col">End of Life</th>
+          <th scope="col" class="sm-center"><span class="sr-only">Supported</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          lifecycle.map((entry) => (
+            <tr data-state={entry.state}>
+              <th scope="row" class="sm-row-head">{entry.version}</th>
+              <td>{entry.status}</td>
+              <td>{entry.endOfLife ?? '—'}</td>
+              <td class="sm-cell sm-center" data-state={entry.state}>
+                <span class="sm-mark" role="img" aria-label={stateMeta[entry.state].label}>
+                  {stateMeta[entry.state].symbol}
+                </span>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sm-legend">
+    <span class="sm-legend-item" data-state="supported">
+      <span class="sm-mark">✓</span> Supported release of Mastodon
+    </span>
+    <span class="sm-legend-item" data-state="warn">
+      <span class="sm-mark">!</span> Deprecated, use with caution
+    </span>
+    <span class="sm-legend-item" data-state="eol">
+      <span class="sm-mark">✕</span> End of life, upgrade to latest release
+    </span>
+  </div>
+</figure>

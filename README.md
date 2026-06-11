@@ -1,72 +1,48 @@
-# Docus Default Starter
+# mastoreqs.com
 
-> A beautiful, minimal starter for creating documentation with Docus
+Community maintained support matrix of recent Mastodon releases and their underlying
+dependencies. Built with [Astro Starlight](https://starlight.astro.build).
 
-This is the default Docus starter template that provides everything you need to build beautiful documentation sites with Markdown and Vue components.
+## How it works
 
-> [!TIP]
-> If you're looking for i18n support, check out the [i18n starter](https://github.com/nuxt-themes/docus/tree/main/.starters/i18n).
+All support data lives in a single source of truth: [`src/data/requirements.json`](src/data/requirements.json).
+The interactive matrices and the lifecycle table are rendered from that file, so updating a
+support status is a one-line edit in the JSON — no table markup to maintain.
 
-## ✨ Features
+- `src/data/requirements.json` — Mastodon versions, per-component support matrices, and the
+  release lifecycle. Each cell is `"yes"` (supported), `"warn"` (deprecated, use with
+  caution), `"no"` (unsupported), or `null` (not applicable / blank).
+- `src/data/requirements.ts` — typed loader and helpers for the JSON.
+- `src/components/SupportMatrix.astro` — renders a component's matrix as an interactive grid
+  (click a Mastodon version to focus its column; hover to highlight a row). Each grid also
+  includes a "Plan an upgrade" advisor: pick a current Mastodon, a target, and your current
+  component version, and it explains what to do. The advisor reads the rendered grid, so it
+  always matches the data — there's nothing extra to keep in sync.
+- `src/components/LifecycleTable.astro` — renders the release lifecycle table.
+- `src/content/docs/` — the page content (MDX), which drops in the components above.
 
-- 🎨 **Beautiful Design** - Clean, modern documentation theme
-- 📱 **Responsive** - Mobile-first responsive design  
-- 🌙 **Dark Mode** - Built-in dark/light mode support
-- 🔍 **Search** - Full-text search functionality
-- 📝 **Markdown Enhanced** - Extended markdown with custom components
-- 🎨 **Customizable** - Easy theming and brand customization
-- ⚡ **Fast** - Optimized for performance with Nuxt 4
-- 🔧 **TypeScript** - Full TypeScript support
+### Adding or updating a version
 
-## 🚀 Quick Start
+Edit `src/data/requirements.json`. To add a new Mastodon release, add it to
+`mastodonVersions` and prepend a matching entry to every row's `support` array (and to
+`lifecycle`). To change a component version's status, edit the relevant `support` array.
+
+## Develop
 
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
-npm run dev
+npm run dev      # http://localhost:4321
 ```
 
-Your documentation site will be running at `http://localhost:3000`
-
-## 📁 Project Structure
-
-```
-my-docs/
-├── content/              # Your markdown content
-│   ├── index.md         # Homepage
-│   ├── 1.getting-started/  # Getting started section
-│   └── 2.essentials/    # Essential documentation
-├── public/              # Static assets
-└── package.json         # Dependencies and scripts
-```
-
-## ⚡ Built with
-
-This starter comes pre-configured with:
-
-- [Nuxt 4](https://nuxt.com) - The web framework
-- [Nuxt Content](https://content.nuxt.com/) - File-based CMS
-- [Nuxt UI](https://ui.nuxt.com) - UI components
-- [Nuxt Image](https://image.nuxt.com/) - Optimized images
-- [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS
-- [Docus Layer](https://www.npmjs.com/package/docus) - Documentation theme
-
-## 📖 Documentation
-
-For detailed documentation on customizing your Docus project, visit the [Docus Documentation](https://docus.dev)
-
-## 🚀 Deployment
-
-Build for production:
+## Build
 
 ```bash
-npm run build
+npm run build    # outputs static site to ./dist
+npm run preview  # serve the production build locally
 ```
 
-The built files will be in the `.output` directory, ready for deployment to any hosting provider that supports Node.js.
+The contents of `./dist` are static HTML and can be deployed to any static host.
 
-## 📄 License
+## License
 
-[MIT License](https://opensource.org/licenses/MIT) 
+[MIT License](https://opensource.org/licenses/MIT)

@@ -1,0 +1,67 @@
+---
+title: Mastodon Requirements
+description: Community maintained support matrix of recent Mastodon releases and their underlying dependencies.
+template: splash
+hero:
+  tagline: A community maintained support matrix of recent Mastodon releases and their underlying dependencies.
+  image:
+    file: ../../assets/mastodon.svg
+  actions:
+    - text: Support Lifecycle
+      link: /lifecycle/
+      icon: right-arrow
+      variant: primary
+    - text: Mastodon on GitHub
+      link: https://github.com/mastodon/mastodon
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+It is designed to provide high-level guidance for determining upgrade paths, and what
+to deploy in an environment. Administrators should also consult the release notes for
+your version of Mastodon, and any product dependencies, before upgrading.
+
+## Components
+
+<CardGrid>
+  <Card title="Ruby" icon="seti:ruby">
+    Webserver and Sidekiq runtime. [View matrix](/components/ruby/)
+  </Card>
+  <Card title="Node" icon="node">
+    Asset compilation and the streaming API. [View matrix](/components/node/)
+  </Card>
+  <Card title="Postgres" icon="seti:db">
+    Primary SQL database. [View matrix](/components/postgres/)
+  </Card>
+  <Card title="Cache" icon="rocket">
+    Redis, Valkey, or DragonflyDB. [View matrix](/components/cache/)
+  </Card>
+  <Card title="libvips" icon="seti:image">
+    Image processing. [View matrix](/components/libvips/)
+  </Card>
+  <Card title="FFmpeg" icon="seti:video">
+    Video processing. [View matrix](/components/ffmpeg/)
+  </Card>
+  <Card title="Search" icon="magnifier">
+    Elasticsearch or OpenSearch. [View matrix](/components/search/)
+  </Card>
+  <Card title="Nginx" icon="seti:nginx">
+    Reverse proxy and TLS termination. [View matrix](/components/nginx/)
+  </Card>
+</CardGrid>
+
+## Recent Changes
+
+<CardGrid>
+  <Card title="Built with Starlight" icon="astro">
+    The static site generator for this page is now [Astro Starlight](https://starlight.astro.build).
+  </Card>
+  <Card title="Support for Mastodon 4.6" icon="add-document">
+    Support for the beta release has been added.
+  </Card>
+  <Card title="Mastodon 4.3 now End of Life" icon="warning">
+    The [4.3.23](https://github.com/mastodon/mastodon/releases/tag/v4.3.23) release was the last version of Mastodon 4.3.
+  </Card>
+</CardGrid>
