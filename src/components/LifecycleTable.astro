@@ -2,9 +2,9 @@
 import { lifecycle, type LifecycleState } from '../data/requirements';
 
 const stateMeta: Record<LifecycleState, { symbol: string; label: string }> = {
-  development: { symbol: '✓', label: 'Main development branch' },
-  supported: { symbol: '✓', label: 'Supported release of Mastodon' },
-  eol: { symbol: '✕', label: 'End of life, upgrade to latest release' },
+  development: { symbol: '✓', label: 'Development Branch' },
+  supported: { symbol: '✓', label: 'Release Branch' },
+  eol: { symbol: '✕', label: 'End of Life' },
 };
 ---
 
@@ -13,9 +13,9 @@ const stateMeta: Record<LifecycleState, { symbol: string; label: string }> = {
     <table>
       <thead>
         <tr>
-          <th scope="col">Mastodon</th>
-          <th scope="col">Status</th>
-          <th scope="col">End of Life</th>
+          <th scope="col"></th>
+          <th scope="col">Branch Status</th>
+          <th scope="col">End of Life Date</th>
           <th scope="col" class="sm-center"><span class="sr-only">Supported</span></th>
         </tr>
       </thead>
@@ -40,13 +40,13 @@ const stateMeta: Record<LifecycleState, { symbol: string; label: string }> = {
 
   <div class="sm-legend">
     <span class="sm-legend-item" data-state="supported">
-      <span class="sm-mark">✓</span> Supported release of Mastodon
+      <span class="sm-mark">✓</span> Supported
     </span>
     <span class="sm-legend-item" data-state="warn">
       <span class="sm-mark">!</span> Deprecated
     </span>
     <span class="sm-legend-item" data-state="eol">
-      <span class="sm-mark">✕</span> End of life, upgrade to latest release
+      <span class="sm-mark">✕</span> End of Life
     </span>
   </div>
 </figure>

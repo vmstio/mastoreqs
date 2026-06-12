@@ -324,6 +324,10 @@
   background: var(--sm-no-bg);
   color: var(--sm-no);
 }
+.sm-legend-item[data-state='na'] .sm-mark {
+  color: var(--sl-color-gray-4);
+  opacity: 0.6;
+}
 
 /* ---- Upgrade advisor -------------------------------------------------- */
 

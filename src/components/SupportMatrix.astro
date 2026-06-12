@@ -30,9 +30,9 @@ const matrix = getMatrix(component, matrixId);
 const displayName = matrix.label ?? components[component].title;
 
 const labels: Record<Exclude<Support, null>, string> = {
-  yes: 'Supported',
+  yes: 'Compatible',
   warn: 'Deprecated',
-  no: 'Unsupported',
+  no: 'Incompatible',
 };
 
 const symbols: Record<Exclude<Support, null>, string> = {
@@ -112,13 +112,16 @@ const symbols: Record<Exclude<Support, null>, string> = {
     legend && (
       <div class="sm-legend">
         <span class="sm-legend-item" data-state="yes">
-          <span class="sm-mark">✓</span> Supported
+          <span class="sm-mark">✓</span> Compatible
         </span>
         <span class="sm-legend-item" data-state="warn">
           <span class="sm-mark">!</span> Deprecated
         </span>
         <span class="sm-legend-item" data-state="no">
-          <span class="sm-mark">✕</span> Unsupported
+          <span class="sm-mark">✕</span> Incompatible
+        </span>
+        <span class="sm-legend-item" data-state="na">
+          <span class="sm-mark">–</span> Not Supported
         </span>
       </div>
     )

@@ -5,16 +5,21 @@ description: We track dependencies for the five most recent Mastodon branches to
 
 import LifecycleTable from '../../components/LifecycleTable.astro';
 
-We track dependencies for the five most recent Mastodon branches to help administrators
-determine upgrade path and deployment options. Administrators should strive to run
-supported releases on supported platforms to give their users the best, and most secure,
-experience possible.
+We track dependencies for five years worth of Mastodon branches to help administrators
+determine upgrade path and deployment options. 
 
 ![Mastodon Branches](/mastodon-branches.png)
 
 Any dependencies listed for development versions (nightly/alpha) of Mastodon are based on
 tracking the development process of the `main` branch on GitHub. These are subject to
 change at any time as project requirements change.
+
+
+:::tip
+Administrators should always strive to run
+the latest supported release on supported platforms to give their users the best, and most secure,
+experience possible.
+:::
 
 <LifecycleTable />
 
