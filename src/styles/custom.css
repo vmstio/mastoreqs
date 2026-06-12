@@ -1,6 +1,12 @@
 /* Theme/chrome is provided by the Nova Starlight plugin. This file only styles
    the bespoke support-matrix and upgrade-advisor components. */
 
+/* Hide the hairline divider Starlight draws between the page title panel and
+   the page content (.content-panel + .content-panel border-top). */
+.content-panel + .content-panel {
+  border-top: none;
+}
+
 :root {
   /* Support-state palette (tuned for the default dark theme). */
   --sm-yes: #4ade80;
