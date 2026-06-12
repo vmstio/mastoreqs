@@ -61,7 +61,7 @@
             { "version": "17.x", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
             { "version": "16.x", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
             { "version": "15.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", null, null] },
-            { "version": "14.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", "warn", null] },
+            { "version": "14.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes", null] },
             { "version": "13.x", "support": ["no", "no", "warn", "warn", "warn", "warn", "warn", "warn", "warn"] },
             { "version": "12.x", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] },
             { "version": "11.x", "support": ["no", "no", "no", "warn", "warn", "warn", "warn", "warn", "warn"] },
@@ -124,9 +124,10 @@
           "id": "imagemagick",
           "label": "ImageMagick",
           "rows": [
-            { "version": "7.1", "support": ["no", "warn", "warn", "yes", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "7.0", "support": ["no", "warn", "warn", "yes", "yes", "yes", "yes", "yes", "yes"] },
-            { "version": "6.9", "support": ["no", "warn", "warn", "yes", "yes", "yes", "yes", "yes", "yes"] }
+            { "version": "7.1", "support": ["no", "yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
+            { "version": "7.0", "support": ["no", "yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
+            { "version": "6.9", "support": ["no", "yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes"] },
+            { "version": "6.8", "support": ["no", "no", "no", "no", "no", "no", "no", "no", "no"] }
           ]
         }
       ]
@@ -179,7 +180,8 @@
           "label": "OpenSearch",
           "rows": [
             { "version": "3.x", "support": ["yes", "yes", null, null, null, null, null, null, null] },
-            { "version": "2.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", null, null] }
+            { "version": "2.x", "support": ["yes", "yes", "yes", "yes", "yes", "yes", "yes", null, null] },
+            { "version": "1.x", "support": ["warn", "warn", "warn", "warn", "warn", "warn", "warn", "warn", "warn"] }
           ]
         }
       ]
