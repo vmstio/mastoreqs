@@ -1,0 +1,25 @@
+---
+title: Ingress
+description: Mastodon requires a load balancer or reverse proxy to terminate TLS and ingress traffic.
+sidebar:
+  order: 8
+  label: Overview
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Mastodon requires a load balancer, ingress or reverse proxy to properly terminate TLS/SSL connections
+between users and the Mastodon web interface and API.
+
+While there is no specific technical requirement or limitation on what software can be used, Nginx is commonly used for this purpose.
+Mastodon has no version-specific requirement for ingress software.
+
+:::note
+Regardless of the ingress software that is used, you should keep it up to date to prevent exploitation of known security vulnerabilities.
+:::
+
+<CardGrid>
+  <LinkCard title="Nginx" href="/components/ingress/nginx/" description="Commonly used reverse proxy." />
+  <LinkCard title="Caddy" href="/components/ingress/caddy/" description="Reverse proxy with automatic TLS." />
+  <LinkCard title="Apache" href="/components/ingress/apache/" description="Apache HTTP Server." />
+</CardGrid>

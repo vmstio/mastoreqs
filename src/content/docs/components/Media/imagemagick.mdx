@@ -1,0 +1,23 @@
+---
+title: ImageMagick
+description: ImageMagick support across recent Mastodon releases.
+sidebar:
+  order: 5.2
+---
+
+import SupportMatrix from '../../../../components/SupportMatrix.astro';
+
+<SupportMatrix component="libvips" matrix="imagemagick" />
+
+References: [ImageMagick](https://imagemagick.org)
+
+```bash
+# Check running version for 7.x
+magick --version
+# Check running version for 6.x
+convert --version
+```
+
+:::caution
+ImageMagick support was deprecated in Mastodon 4.4 and is removed in Mastodon 4.6.
+:::

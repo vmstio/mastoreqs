@@ -1,0 +1,18 @@
+---
+title: Cache
+description: Mastodon requires a Redis-compatible backend such as Redis, Valkey, or DragonflyDB.
+sidebar:
+  order: 4
+  label: Overview
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Mastodon requires administrators to choose a Redis-compatible backend for operation. It
+supports Redis, Valkey, or DragonflyDB, and one of these must be present and configured.
+
+<CardGrid>
+  <LinkCard title="Valkey" href="/components/cache/valkey/" description="Open source, community-driven Redis fork." />
+  <LinkCard title="Redis" href="/components/cache/redis/" description="The original Redis-compatible backend." />
+  <LinkCard title="Dragonfly" href="/components/cache/dragonfly/" description="Redis API-compatible platform." />
+</CardGrid>

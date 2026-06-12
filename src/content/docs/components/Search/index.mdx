@@ -1,0 +1,17 @@
+---
+title: Search
+description: Mastodon may optionally use Elasticsearch or OpenSearch for full-text search.
+sidebar:
+  order: 7
+  label: Overview
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Mastodon may optionally utilize an installation of Elasticsearch or OpenSearch.
+Administrators may add either service to enable full-text search features.
+
+<CardGrid>
+  <LinkCard title="Elasticsearch" href="/components/search/elasticsearch/" description="Full-text search engine." />
+  <LinkCard title="OpenSearch" href="/components/search/opensearch/" description="Open source search engine." />
+</CardGrid>

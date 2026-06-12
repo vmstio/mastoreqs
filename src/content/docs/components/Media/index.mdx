@@ -1,0 +1,18 @@
+---
+title: Media
+description: Mastodon requires an image processor (libvips or ImageMagick) and FFmpeg for video processing.
+sidebar:
+  order: 5
+  label: Overview
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Mastodon processes uploaded media with two dependencies: an image processor (libvips,
+historically ImageMagick) and FFmpeg for video. Both must be present and configured.
+
+<CardGrid>
+  <LinkCard title="libvips" href="/components/media/libvips/" description="The required image processor." />
+  <LinkCard title="ImageMagick" href="/components/media/imagemagick/" description="Deprecated in 4.4, removed in 4.6." />
+  <LinkCard title="FFmpeg" href="/components/media/ffmpeg/" description="Video processing." />
+</CardGrid>

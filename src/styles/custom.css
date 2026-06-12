@@ -544,3 +544,11 @@
 .uadv-section.is-managed .uadv-controls {
   opacity: 0.55;
 }
+
+/* Shrink the labels of nested sidebar groups (the per-software vendor groups
+   like Cache, Images, Search, Ingress) so they read as a sub-level beneath the
+   top-level "Components" heading. The `details details` selector matches only
+   second-level groups, leaving top-level group labels at their default size. */
+.sidebar-content details details > summary .large {
+  font-size: var(--sl-text-sm);
+}
