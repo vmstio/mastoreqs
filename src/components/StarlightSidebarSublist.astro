@@ -243,3 +243,23 @@ function nextRestoreIndex(): number {
     }
   }
 </style>
+
+<script>
+  // A group heading is an `<a>` nested inside the `<summary>`, so a native
+  // browser click would both follow the link *and* toggle the parent
+  // `<details>` (which SidebarPersister then remembers, leaving the group
+  // collapsed after navigation). Stopping propagation keeps the click from
+  // reaching the summary's toggle handler while the link still navigates, so
+  // expanding/collapsing remains the caret's job.
+  function wireGroupLabelLinks() {
+    document.querySelectorAll<HTMLAnchorElement>('a.group-label-link').forEach((link) => {
+      if (link.dataset.noToggleWired) return;
+      link.dataset.noToggleWired = 'true';
+      link.addEventListener('click', (event) => event.stopPropagation());
+    });
+  }
+
+  wireGroupLabelLinks();
+  // Re-wire after view-transition navigations, if enabled.
+  document.addEventListener('astro:page-load', wireGroupLabelLinks);
+</script>
