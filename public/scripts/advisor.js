@@ -145,6 +145,14 @@
           : 'Choose which backend you run to see guidance.');
         return;
       }
+      // "Other" backend: nothing tracked here, so lock the version picker and
+      // hand the admin off to their own software's compatibility notes.
+      if (prov && key === 'other') {
+        cur.disabled = true;
+        setResult(sec, 'neutral', 'Not tracked by the advisor — ' +
+          'check your software’s own Mastodon compatibility.');
+        return;
+      }
       if (!key || !matrices[key]) {
         setResult(sec, 'neutral', 'Select your version to see upgrade guidance.');
         return;

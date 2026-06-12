@@ -35,6 +35,8 @@ interface Section {
   providerLabel?: string;
   providers?: Provider[];
   optional?: boolean;
+  /** Offer an "Other" backend that locks the section (no version guidance). */
+  other?: boolean;
   /** Image processor: enables ImageMagick → libvips migration awareness. */
   image?: boolean;
   /** Bundled in the official Mastodon container image, so it's managed by the
@@ -82,7 +84,7 @@ const sections: Section[] = [
     id: 'ingress',
     title: 'Ingress',
     providerLabel: 'Ingress software',
-    optional: true,
+    other: true,
     providers: [
       { label: 'Nginx', key: 'nginx:nginx' },
       { label: 'Caddy', key: 'nginx:caddy' },
@@ -150,6 +152,7 @@ const sections: Section[] = [
                   {s.providers.map((p) => (
                     <option value={p.key} data-label={p.label}>{p.label}</option>
                   ))}
+                  {s.other && <option value="other">Other</option>}
                 </select>
               </label>
             )}

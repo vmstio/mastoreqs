@@ -32,7 +32,7 @@ const displayName = matrix.label ?? components[component].title;
 const labels: Record<Exclude<Support, null>, string> = {
   yes: 'Supported',
   warn: 'Deprecated',
-  no: 'End of Life',
+  no: 'Unsupported',
 };
 
 const symbols: Record<Exclude<Support, null>, string> = {
@@ -118,7 +118,7 @@ const symbols: Record<Exclude<Support, null>, string> = {
           <span class="sm-mark">!</span> Deprecated
         </span>
         <span class="sm-legend-item" data-state="no">
-          <span class="sm-mark">✕</span> End of Life
+          <span class="sm-mark">✕</span> Unsupported
         </span>
       </div>
     )
