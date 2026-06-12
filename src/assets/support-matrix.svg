@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 632 408" width="632" height="408" role="img" aria-label="Stylized Mastodon interoperability matrix">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+      .label { fill: #f5f5f7; }
+      .muted { fill: #6c7086; }
+    </style>
+  </defs>
+
+  <!-- Transparent padding around the window so the CSS drop-shadow on the
+       <img> has room and isn't clipped at the SVG canvas edge. -->
+  <g transform="translate(24,24)">
+  <!-- Window -->
+    <rect x="0" y="0" width="584" height="360" rx="14" fill="#11111b" stroke="#313244" stroke-width="1"/>
+    <!-- Title bar -->
+    <path d="M0 14 A14 14 0 0 1 14 0 H570 A14 14 0 0 1 584 14 V44 H0 Z" fill="#181825"/>
+    <line x1="0" y1="44" x2="584" y2="44" stroke="#313244" stroke-width="1"/>
+    <circle cx="26" cy="22" r="6" fill="#ff5f56"/>
+    <circle cx="48" cy="22" r="6" fill="#ffbd2e"/>
+    <circle cx="70" cy="22" r="6" fill="#27c93f"/>
+    <text class="mono muted" x="292" y="27" font-size="13" text-anchor="middle">Interoperability Matrix</text>
+
+  <!-- Column headers (Mastodon versions) -->
+  <g class="mono label" font-size="15" text-anchor="middle">
+    <text x="119" y="80">4.4</text>
+    <text x="218" y="80">4.3</text>
+    <text x="316" y="80">4.2</text>
+    <text x="414" y="80">4.1</text>
+    <text x="513" y="80">4.0</text>
+  </g>
+
+  <!-- Row headers (Ruby versions) -->
+  <g class="mono label" font-size="15" text-anchor="end">
+    <text x="58" y="118">3.4</text>
+    <text x="58" y="169">3.3</text>
+    <text x="58" y="219">3.2</text>
+    <text x="58" y="269">3.1</text>
+    <text x="58" y="320">3.0</text>
+  </g>
+
+  <!-- Cells -->
+  <g class="mono" font-size="20" text-anchor="middle" font-weight="600">
+    <rect x="73.5" y="91.5" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="119.2" y="120.2" fill="#4ade80">✓</text>
+    <rect x="171.9" y="91.5" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="217.6" y="120.2" fill="#4ade80">✓</text>
+    <rect x="270.3" y="91.5" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="316.0" y="120.2" fill="#4ade80">✓</text>
+    <rect x="368.7" y="91.5" width="91.4" height="43.4" rx="9" fill="rgba(250,204,21,0.22)" stroke="#fde047" stroke-width="1" stroke-opacity="0.35">
+      <animate attributeName="fill"   values="rgba(250,204,21,0.22);rgba(248,113,113,0.13);rgba(74,222,128,0.16);rgba(250,204,21,0.22)"     calcMode="discrete" dur="3.6s" begin="-0.2s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#fde047;#f87171;#4ade80;#fde047" calcMode="discrete" dur="3.6s" begin="-0.2s" repeatCount="indefinite"/>
+    </rect>
+    <text x="414.4" y="120.2" fill="#4ade80" opacity="0">✓<animate attributeName="opacity" values="0;0;1;0" calcMode="discrete" dur="3.6s" begin="-0.2s" repeatCount="indefinite"/></text>
+    <text x="414.4" y="120.2" fill="#fde047" opacity="1">!<animate attributeName="opacity" values="1;0;0;1" calcMode="discrete" dur="3.6s" begin="-0.2s" repeatCount="indefinite"/></text>
+    <text x="414.4" y="120.2" fill="#f87171" opacity="0">✕<animate attributeName="opacity" values="0;1;0;0" calcMode="discrete" dur="3.6s" begin="-0.2s" repeatCount="indefinite"/></text>
+    <rect x="467.1" y="91.5" width="91.4" height="43.4" rx="9" fill="rgba(248,113,113,0.13)" stroke="#f87171" stroke-width="1" stroke-opacity="0.35">
+      <animate attributeName="fill"   values="rgba(248,113,113,0.13);rgba(74,222,128,0.16);rgba(250,204,21,0.22);rgba(248,113,113,0.13)"     calcMode="discrete" dur="4.2s" begin="-1.0s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#f87171;#4ade80;#fde047;#f87171" calcMode="discrete" dur="4.2s" begin="-1.0s" repeatCount="indefinite"/>
+    </rect>
+    <text x="512.8" y="120.2" fill="#4ade80" opacity="0">✓<animate attributeName="opacity" values="0;1;0;0" calcMode="discrete" dur="4.2s" begin="-1.0s" repeatCount="indefinite"/></text>
+    <text x="512.8" y="120.2" fill="#fde047" opacity="0">!<animate attributeName="opacity" values="0;0;1;0" calcMode="discrete" dur="4.2s" begin="-1.0s" repeatCount="indefinite"/></text>
+    <text x="512.8" y="120.2" fill="#f87171" opacity="1">✕<animate attributeName="opacity" values="1;0;0;1" calcMode="discrete" dur="4.2s" begin="-1.0s" repeatCount="indefinite"/></text>
+    <rect x="73.5" y="141.9" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="119.2" y="170.6" fill="#4ade80">✓</text>
+    <rect x="171.9" y="141.9" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35">
+      <animate attributeName="fill"   values="rgba(74,222,128,0.16);rgba(248,113,113,0.13);rgba(250,204,21,0.22);rgba(74,222,128,0.16)"     calcMode="discrete" dur="4.8s" begin="-1.6s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#4ade80;#f87171;#fde047;#4ade80" calcMode="discrete" dur="4.8s" begin="-1.6s" repeatCount="indefinite"/>
+    </rect>
+    <text x="217.6" y="170.6" fill="#4ade80" opacity="1">✓<animate attributeName="opacity" values="1;0;0;1" calcMode="discrete" dur="4.8s" begin="-1.6s" repeatCount="indefinite"/></text>
+    <text x="217.6" y="170.6" fill="#fde047" opacity="0">!<animate attributeName="opacity" values="0;0;1;0" calcMode="discrete" dur="4.8s" begin="-1.6s" repeatCount="indefinite"/></text>
+    <text x="217.6" y="170.6" fill="#f87171" opacity="0">✕<animate attributeName="opacity" values="0;1;0;0" calcMode="discrete" dur="4.8s" begin="-1.6s" repeatCount="indefinite"/></text>
+    <rect x="270.3" y="141.9" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="316.0" y="170.6" fill="#4ade80">✓</text>
+    <rect x="368.7" y="141.9" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="414.4" y="170.6" fill="#4ade80">✓</text>
+    <rect x="467.1" y="141.9" width="91.4" height="43.4" rx="9" fill="rgba(250,204,21,0.22)" stroke="#fde047" stroke-width="1" stroke-opacity="0.35">
+      <animate attributeName="fill"   values="rgba(250,204,21,0.22);rgba(74,222,128,0.16);rgba(248,113,113,0.13);rgba(250,204,21,0.22)"     calcMode="discrete" dur="3.2s" begin="-0.5s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#fde047;#4ade80;#f87171;#fde047" calcMode="discrete" dur="3.2s" begin="-0.5s" repeatCount="indefinite"/>
+    </rect>
+    <text x="512.8" y="170.6" fill="#4ade80" opacity="0">✓<animate attributeName="opacity" values="0;1;0;0" calcMode="discrete" dur="3.2s" begin="-0.5s" repeatCount="indefinite"/></text>
+    <text x="512.8" y="170.6" fill="#fde047" opacity="1">!<animate attributeName="opacity" values="1;0;0;1" calcMode="discrete" dur="3.2s" begin="-0.5s" repeatCount="indefinite"/></text>
+    <text x="512.8" y="170.6" fill="#f87171" opacity="0">✕<animate attributeName="opacity" values="0;0;1;0" calcMode="discrete" dur="3.2s" begin="-0.5s" repeatCount="indefinite"/></text>
+    <rect x="73.5" y="192.3" width="91.4" height="43.4" rx="9" fill="rgba(250,204,21,0.22)" stroke="#fde047" stroke-width="1" stroke-opacity="0.35">
+      <animate attributeName="fill"   values="rgba(250,204,21,0.22);rgba(248,113,113,0.13);rgba(74,222,128,0.16);rgba(74,222,128,0.16)"     calcMode="discrete" dur="4.6s" begin="-1.4s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#fde047;#f87171;#4ade80;#4ade80" calcMode="discrete" dur="4.6s" begin="-1.4s" repeatCount="indefinite"/>
+    </rect>
+    <text x="119.2" y="221.0" fill="#4ade80" opacity="0">✓<animate attributeName="opacity" values="0;0;1;1" calcMode="discrete" dur="4.6s" begin="-1.4s" repeatCount="indefinite"/></text>
+    <text x="119.2" y="221.0" fill="#fde047" opacity="1">!<animate attributeName="opacity" values="1;0;0;0" calcMode="discrete" dur="4.6s" begin="-1.4s" repeatCount="indefinite"/></text>
+    <text x="119.2" y="221.0" fill="#f87171" opacity="0">✕<animate attributeName="opacity" values="0;1;0;0" calcMode="discrete" dur="4.6s" begin="-1.4s" repeatCount="indefinite"/></text>
+    <rect x="171.9" y="192.3" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="217.6" y="221.0" fill="#4ade80">✓</text>
+    <rect x="270.3" y="192.3" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="316.0" y="221.0" fill="#4ade80">✓</text>
+    <rect x="368.7" y="192.3" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35">
+      <animate attributeName="fill"   values="rgba(74,222,128,0.16);rgba(250,204,21,0.22);rgba(74,222,128,0.16);rgba(248,113,113,0.13)"     calcMode="discrete" dur="3.8s" begin="-0.7s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#4ade80;#fde047;#4ade80;#f87171" calcMode="discrete" dur="3.8s" begin="-0.7s" repeatCount="indefinite"/>
+    </rect>
+    <text x="414.4" y="221.0" fill="#4ade80" opacity="1">✓<animate attributeName="opacity" values="1;0;1;0" calcMode="discrete" dur="3.8s" begin="-0.7s" repeatCount="indefinite"/></text>
+    <text x="414.4" y="221.0" fill="#fde047" opacity="0">!<animate attributeName="opacity" values="0;1;0;0" calcMode="discrete" dur="3.8s" begin="-0.7s" repeatCount="indefinite"/></text>
+    <text x="414.4" y="221.0" fill="#f87171" opacity="0">✕<animate attributeName="opacity" values="0;0;0;1" calcMode="discrete" dur="3.8s" begin="-0.7s" repeatCount="indefinite"/></text>
+    <rect x="467.1" y="192.3" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="512.8" y="221.0" fill="#4ade80">✓</text>
+    <rect x="73.5" y="242.7" width="91.4" height="43.4" rx="9" fill="rgba(248,113,113,0.13)" stroke="#f87171" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="119.2" y="271.4" fill="#f87171">✕</text>
+    <rect x="171.9" y="242.7" width="91.4" height="43.4" rx="9" fill="rgba(250,204,21,0.22)" stroke="#fde047" stroke-width="1" stroke-opacity="0.35">
+      <animate attributeName="fill"   values="rgba(250,204,21,0.22);rgba(74,222,128,0.16);rgba(250,204,21,0.22);rgba(248,113,113,0.13)"     calcMode="discrete" dur="4.0s" begin="-0.3s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#fde047;#4ade80;#fde047;#f87171" calcMode="discrete" dur="4.0s" begin="-0.3s" repeatCount="indefinite"/>
+    </rect>
+    <text x="217.6" y="271.4" fill="#4ade80" opacity="0">✓<animate attributeName="opacity" values="0;1;0;0" calcMode="discrete" dur="4.0s" begin="-0.3s" repeatCount="indefinite"/></text>
+    <text x="217.6" y="271.4" fill="#fde047" opacity="1">!<animate attributeName="opacity" values="1;0;1;0" calcMode="discrete" dur="4.0s" begin="-0.3s" repeatCount="indefinite"/></text>
+    <text x="217.6" y="271.4" fill="#f87171" opacity="0">✕<animate attributeName="opacity" values="0;0;0;1" calcMode="discrete" dur="4.0s" begin="-0.3s" repeatCount="indefinite"/></text>
+    <rect x="270.3" y="242.7" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="316.0" y="271.4" fill="#4ade80">✓</text>
+    <rect x="368.7" y="242.7" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="414.4" y="271.4" fill="#4ade80">✓</text>
+    <rect x="467.1" y="242.7" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35">
+      <animate attributeName="fill"   values="rgba(74,222,128,0.16);rgba(248,113,113,0.13);rgba(74,222,128,0.16);rgba(250,204,21,0.22)"     calcMode="discrete" dur="3.4s" begin="-1.1s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#4ade80;#f87171;#4ade80;#fde047" calcMode="discrete" dur="3.4s" begin="-1.1s" repeatCount="indefinite"/>
+    </rect>
+    <text x="512.8" y="271.4" fill="#4ade80" opacity="1">✓<animate attributeName="opacity" values="1;0;1;0" calcMode="discrete" dur="3.4s" begin="-1.1s" repeatCount="indefinite"/></text>
+    <text x="512.8" y="271.4" fill="#fde047" opacity="0">!<animate attributeName="opacity" values="0;0;0;1" calcMode="discrete" dur="3.4s" begin="-1.1s" repeatCount="indefinite"/></text>
+    <text x="512.8" y="271.4" fill="#f87171" opacity="0">✕<animate attributeName="opacity" values="0;1;0;0" calcMode="discrete" dur="3.4s" begin="-1.1s" repeatCount="indefinite"/></text>
+    <rect x="73.5" y="293.1" width="91.4" height="43.4" rx="9" fill="rgba(248,113,113,0.13)" stroke="#f87171" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="119.2" y="321.8" fill="#f87171">✕</text>
+    <rect x="171.9" y="293.1" width="91.4" height="43.4" rx="9" fill="rgba(248,113,113,0.13)" stroke="#f87171" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="217.6" y="321.8" fill="#f87171">✕</text>
+    <rect x="270.3" y="293.1" width="91.4" height="43.4" rx="9" fill="rgba(250,204,21,0.22)" stroke="#fde047" stroke-width="1" stroke-opacity="0.35">
+      <animate attributeName="fill"   values="rgba(250,204,21,0.22);rgba(248,113,113,0.13);rgba(250,204,21,0.22);rgba(74,222,128,0.16)"     calcMode="discrete" dur="4.4s" begin="-0.9s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#fde047;#f87171;#fde047;#4ade80" calcMode="discrete" dur="4.4s" begin="-0.9s" repeatCount="indefinite"/>
+    </rect>
+    <text x="316.0" y="321.8" fill="#4ade80" opacity="0">✓<animate attributeName="opacity" values="0;0;0;1" calcMode="discrete" dur="4.4s" begin="-0.9s" repeatCount="indefinite"/></text>
+    <text x="316.0" y="321.8" fill="#fde047" opacity="1">!<animate attributeName="opacity" values="1;0;1;0" calcMode="discrete" dur="4.4s" begin="-0.9s" repeatCount="indefinite"/></text>
+    <text x="316.0" y="321.8" fill="#f87171" opacity="0">✕<animate attributeName="opacity" values="0;1;0;0" calcMode="discrete" dur="4.4s" begin="-0.9s" repeatCount="indefinite"/></text>
+    <rect x="368.7" y="293.1" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="414.4" y="321.8" fill="#4ade80">✓</text>
+    <rect x="467.1" y="293.1" width="91.4" height="43.4" rx="9" fill="rgba(74,222,128,0.16)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.35">
+      <animate attributeName="fill"   values="rgba(74,222,128,0.16);rgba(250,204,21,0.22);rgba(248,113,113,0.13);rgba(74,222,128,0.16)"     calcMode="discrete" dur="3.0s" begin="-0.4s" repeatCount="indefinite"/>
+      <animate attributeName="stroke" values="#4ade80;#fde047;#f87171;#4ade80" calcMode="discrete" dur="3.0s" begin="-0.4s" repeatCount="indefinite"/>
+    </rect>
+    <text x="512.8" y="321.8" fill="#4ade80" opacity="1">✓<animate attributeName="opacity" values="1;0;0;1" calcMode="discrete" dur="3.0s" begin="-0.4s" repeatCount="indefinite"/></text>
+    <text x="512.8" y="321.8" fill="#fde047" opacity="0">!<animate attributeName="opacity" values="0;1;0;0" calcMode="discrete" dur="3.0s" begin="-0.4s" repeatCount="indefinite"/></text>
+    <text x="512.8" y="321.8" fill="#f87171" opacity="0">✕<animate attributeName="opacity" values="0;0;1;0" calcMode="discrete" dur="3.0s" begin="-0.4s" repeatCount="indefinite"/></text>
+  </g>
+  </g>
+</svg>
