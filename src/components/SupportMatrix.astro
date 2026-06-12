@@ -58,9 +58,7 @@ const symbols: Record<Exclude<Support, null>, string> = {
           </th>
         </tr>
         <tr>
-          <th scope="col" class="sm-corner">
-            <span class="sm-corner-label">{displayName}</span>
-          </th>
+          <th scope="col" class="sm-corner" aria-hidden="true" />
           {
             mastodonVersions.map((v, i) => (
               <th scope="col" class="sm-version-head">

@@ -127,18 +127,17 @@
   border-top: 0;
 }
 
-/* First column: wide enough to caption the left axis with the component or
-   backend name (e.g. "Elasticsearch") without crowding the version numbers. */
+/* First column: holds the component version numbers (e.g. "8.17"); the component
+   name itself lives in the page heading above each matrix, not in the corner. */
 .support-matrix col,
 .sm-corner,
 .sm-row-head {
   width: 6rem;
 }
 
-/* Axis labels make the grid self-describing — Mastodon across the top, the
-   component (or backend) down the left — so no separate "how to read" note is
-   needed. The band is thinner than the version row and keeps the heavy 2px
-   rule under the version headers, not under "Mastodon". */
+/* The "Mastodon" axis label across the top keeps the grid self-describing. The
+   band is thinner than the version row and keeps the heavy 2px rule under the
+   version headers, not under "Mastodon". */
 .support-matrix .sm-axis-row th,
 .support-matrix .sm-axis-row td {
   height: 1.9rem;
@@ -163,13 +162,6 @@
   background: var(--sl-color-gray-6);
   border-right: 1px solid var(--sm-gridline);
 }
-.sm-corner-label {
-  font-size: var(--sl-text-xs);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--sl-color-gray-2);
-}
-
 /* Header band */
 .support-matrix thead th {
   position: sticky;

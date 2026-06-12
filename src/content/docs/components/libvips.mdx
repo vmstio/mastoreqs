@@ -7,7 +7,16 @@ sidebar:
 
 import SupportMatrix from '../../../components/SupportMatrix.astro';
 
-Mastodon requires the image processor libvips.
+Mastodon requires an image processor to generate thumbnails and transcode uploaded media.
+
+For most of Mastodon's history, [ImageMagick](https://imagemagick.org) was the only
+supported option. Mastodon 4.4 introduced support for [libvips](https://www.libvips.org) as
+a faster, lighter alternative, allowing administrators to run either processor during the
+transition. ImageMagick was deprecated in that same 4.4 release.
+
+:::tip
+As of Mastodon 4.6, libvips is now the only supported image processor.
+:::
 
 ## libvips
 
@@ -37,7 +46,3 @@ magick --version
 # Check running version for 6.x
 convert --version
 ```
-
-:::caution
-ImageMagick support was deprecated in Mastodon 4.4 and is removed in Mastodon 4.6.
-:::

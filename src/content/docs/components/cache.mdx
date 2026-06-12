@@ -16,17 +16,6 @@ may also work with Mastodon. These alternatives are not tracked as part of this 
 consult your chosen software's own documentation for its Mastodon compatibility.
 :::
 
-## Valkey
-
-<SupportMatrix component="cache" matrix="valkey" />
-
-References: [Valkey Releases](https://valkey.io/topics/releases/)
-
-```bash
-# Check running version
-valkey-server --version
-```
-
 ## Redis
 
 <SupportMatrix component="cache" matrix="redis" />
@@ -42,3 +31,23 @@ redis-server --version
 Mastodon has not required upgrades of Redis for many years, but this has changed with
 versions 4.4+. Please review the available versions in your deployment carefully before upgrading.
 :::
+
+## Valkey
+
+<SupportMatrix component="cache" matrix="valkey" />
+
+References: [Valkey Releases](https://valkey.io/topics/releases/)
+
+```bash
+# Check running version
+valkey-server --version
+```
+
+[Valkey](https://valkey.io) is an open-source fork of Redis, created by the community in
+2024 after Redis Ltd. moved Redis off of its previous open-source (BSD) license. Forked
+from Redis 7.2.4 and now stewarded by the Linux Foundation, Valkey remains BSD-licensed
+and aims to stay a drop-in replacement for Redis: it speaks the same protocol, uses the
+same data structures, and is configured the same way. For Mastodon's purposes the two are
+interchangeable, which is why their versions are tracked separately below but either may be
+used. New deployments are encouraged to use Valkey for its open-source license and active
+community development.
