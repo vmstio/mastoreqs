@@ -619,3 +619,63 @@
   font-size: 13px;
   font-weight: 600;
 }
+
+/* ---- Support timeline (Gantt) ----------------------------------------- */
+
+.support-timeline {
+  margin: 1.5rem 0;
+}
+.support-timeline svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 56rem;
+  margin-inline: auto;
+}
+.support-timeline text {
+  font-family: var(--sl-font-system, system-ui, sans-serif);
+}
+.support-timeline .st-grid {
+  stroke: var(--sm-gridline);
+  stroke-width: 1;
+}
+.support-timeline .st-today {
+  stroke: var(--sl-color-gray-3);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+.support-timeline .st-tick {
+  fill: var(--sl-color-gray-3);
+  font-size: 12px;
+}
+.support-timeline .st-label {
+  fill: var(--sl-color-white);
+  font-size: 13px;
+  font-weight: 600;
+}
+.support-timeline .st-bar {
+  rx: 3;
+  ry: 3;
+}
+/* "No end date" badge: a dashed, muted continuation marker. */
+.support-timeline .st-badge {
+  fill: var(--sl-color-gray-5);
+  stroke: var(--sl-color-gray-4);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  rx: 3;
+  ry: 3;
+}
+.support-timeline .st-plus {
+  fill: var(--sl-color-white);
+  font-size: 14px;
+  font-weight: 700;
+}
+.support-timeline .st-legend {
+  fill: var(--sl-color-gray-2);
+  font-size: 12px;
+}
+.support-timeline .st-legend-icon {
+  rx: 2;
+  ry: 2;
+}

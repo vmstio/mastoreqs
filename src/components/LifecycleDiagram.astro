@@ -29,7 +29,7 @@ const STATE_COLOR: Record<LifecycleState, string> = {
   development: 'var(--lc-dev)',
 };
 
-/** "4.5" -> "4.5.x"; anything already wild (e.g. "3.x") is left alone. */
+/** "4.5" -> "4.5.x"; a version already carrying a wildcard is left alone. */
 const versionLabel = (v: string) => (/x/i.test(v) ? v : `${v}.x`);
 
 // `lifecycle` is newest-first; the timeline reads oldest-left -> newest-right,
