@@ -52,10 +52,10 @@ const sections: Section[] = [
     id: 'cache',
     title: 'Cache',
     providerLabel: 'Cache backend',
+    other: true,
     providers: [
       { label: 'Valkey', key: 'cache:valkey' },
       { label: 'Redis', key: 'cache:redis' },
-      { label: 'DragonflyDB', key: 'cache:dragonfly' },
     ],
   },
   {
@@ -75,20 +75,10 @@ const sections: Section[] = [
     title: 'Search',
     providerLabel: 'Search backend',
     optional: true,
+    other: true,
     providers: [
       { label: 'Elasticsearch', key: 'search:elasticsearch' },
       { label: 'OpenSearch', key: 'search:opensearch' },
-    ],
-  },
-  {
-    id: 'ingress',
-    title: 'Ingress',
-    providerLabel: 'Ingress software',
-    other: true,
-    providers: [
-      { label: 'Nginx', key: 'nginx:nginx' },
-      { label: 'Caddy', key: 'nginx:caddy' },
-      { label: 'Apache', key: 'nginx:apache' },
     ],
   },
 ];
