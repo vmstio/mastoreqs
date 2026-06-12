@@ -8,7 +8,7 @@ export default defineConfig({
   site: 'https://mastoreqs.com',
   integrations: [
     starlight({
-      title: 'Mastodon Requirements',
+      title: 'Mastodon Interoperability Matrix',
       description: 'Community maintained support matrix of recent Mastodon releases and their underlying dependencies.',
       favicon: '/favicon.svg',
       // Nova provides the site theme/chrome; custom.css now only styles the
