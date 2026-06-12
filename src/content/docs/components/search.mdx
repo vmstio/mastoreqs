@@ -10,6 +10,12 @@ import SupportMatrix from '../../../components/SupportMatrix.astro';
 Mastodon may optionally utilize an installation of Elasticsearch or OpenSearch.
 Administrators may add either service to enable full-text search features.
 
+:::note
+Other Elasticsearch API-compatible search providers may also work with Mastodon. These
+alternatives are not tracked as part of this matrix, so consult your chosen software's own
+documentation for its Mastodon compatibility.
+:::
+
 ## Elasticsearch
 
 <SupportMatrix component="search" matrix="elasticsearch" />
@@ -31,3 +37,11 @@ References: [OpenSearch Maintenance Policy](https://opensearch.org/releases.html
 # Check running version
 opensearch --version
 ```
+
+[OpenSearch](https://opensearch.org) is an open-source fork of Elasticsearch, created by
+AWS in 2021 after Elastic moved Elasticsearch off of its previous open-source (Apache 2.0)
+license. Forked from Elasticsearch 7.10.2 and now stewarded by the Linux Foundation,
+OpenSearch remains Apache 2.0-licensed. The two projects have diverged over time, but for
+Mastodon's purposes they remain interchangeable, which is why their versions are tracked
+separately below but either may be used. New deployments are encouraged to use OpenSearch
+for its open-source license and active community development.

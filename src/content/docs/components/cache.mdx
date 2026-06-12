@@ -1,6 +1,6 @@
 ---
 title: Cache
-description: Mastodon requires a Redis-compatible backend such as Redis, Valkey, or DragonflyDB.
+description: Mastodon requires a Redis-compatible backend such as Redis or Valkey.
 sidebar:
   order: 4
 ---
@@ -8,18 +8,13 @@ sidebar:
 import SupportMatrix from '../../../components/SupportMatrix.astro';
 
 Mastodon requires administrators to choose a Redis-compatible backend for operation. It
-supports Redis, Valkey, or DragonflyDB, and one of these must be present and configured.
+supports Redis or Valkey, and one of these must be present and configured.
 
-## Valkey
-
-<SupportMatrix component="cache" matrix="valkey" />
-
-References: [Valkey Releases](https://valkey.io/topics/releases/)
-
-```bash
-# Check running version
-valkey-server --version
-```
+:::note
+Other Redis API-compatible providers, such as [DragonflyDB](https://www.dragonflydb.io),
+may also work with Mastodon. These alternatives are not tracked as part of this matrix, so
+consult your chosen software's own documentation for its Mastodon compatibility.
+:::
 
 ## Redis
 
@@ -37,19 +32,22 @@ Mastodon has not required upgrades of Redis for many years, but this has changed
 versions 4.4+. Please review the available versions in your deployment carefully before upgrading.
 :::
 
-## Dragonfly
+## Valkey
 
-<SupportMatrix component="cache" matrix="dragonfly" />
+<SupportMatrix component="cache" matrix="valkey" />
 
-References: [Dragonfly Releases](https://github.com/dragonflydb/dragonfly/releases)
+References: [Valkey Releases](https://valkey.io/topics/releases/)
 
 ```bash
 # Check running version
-dragonfly --version
+valkey-server --version
 ```
 
-:::caution
-[Dragonfly](https://www.dragonflydb.io) as a Redis API-compatible platform should be used
-with caution and is recommended for use only by experienced administrators who are
-willing/able to provide feedback.
-:::
+[Valkey](https://valkey.io) is an open-source fork of Redis, created by the community in
+2024 after Redis Ltd. moved Redis off of its previous open-source (BSD) license. Forked
+from Redis 7.2.4 and now stewarded by the Linux Foundation, Valkey remains BSD-licensed
+and aims to stay a drop-in replacement for Redis: it speaks the same protocol, uses the
+same data structures, and is configured the same way. For Mastodon's purposes the two are
+interchangeable, which is why their versions are tracked separately below but either may be
+used. New deployments are encouraged to use Valkey for its open-source license and active
+community development.
