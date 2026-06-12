@@ -10,17 +10,9 @@ import SupportTimeline from '../../components/SupportTimeline.astro';
 We track dependencies for five years worth of Mastodon branches to help administrators
 determine upgrade path and deployment options. 
 
-<LifecycleDiagram />
-
-Any dependencies listed for development versions (nightly/alpha) of Mastodon are based on
-tracking the development process of the `main` branch on GitHub. These are subject to
-change at any time as project requirements change.
-
-
 :::tip
-Administrators should always strive to run
-the latest supported release on supported platforms to give their users the best, and most secure,
-experience possible.
+Administrators should always strive to run the latest supported Mastodon release on supported platforms running the latest updates to the underlying component.
+This reduces risk and gives their users the best and most secure experience possible.
 :::
 
 <LifecycleTable />
@@ -29,11 +21,69 @@ experience possible.
 
 References: [Mastodon Security Policy](https://github.com/mastodon/mastodon/security)
 
-For the purposes of this document, when applied to dependencies the term "End of Life" is
-standardized to mean when there are no further updates of any kind, and/or no support
-available for a released version of Mastodon or its dependencies.
-
 :::danger
 End of Life versions of Mastodon do not receive any features, bug fixes, and generally no
 security updates except at the discretion of the development team.
 :::
+
+## Versioning
+
+Mastodon follows [Semantic Versioning](https://semver.org/) (often shortened to "semver"),
+expressing each release as `vMAJOR.MINOR.PATCH` — for example, `v4.5.1`. The `MAJOR.MINOR`
+portion (`4.5`) identifies a release series, while the `PATCH` (`.1`) counts the maintenance
+releases within that series.
+
+Development happens in the open on [GitHub](https://github.com/mastodon/mastodon). Anyone can
+_fork_ the repository, make changes, and propose them back as a _pull request_; once the
+maintainers review and approve it, the change is _merged_ into the `main` branch — the running
+total of all approved work.
+
+When the maintainers decide the features planned for the next `MAJOR.MINOR` are ready, they tag
+`main` and split off a dedicated **stable branch** for that series. When 4.5.0 shipped, for
+instance, the `stable-45` branch shown below was created, and `main` moved on toward the next
+series.
+
+### Backports
+
+From that point `main` carries new features for the _next_ release, while the stable branches
+receive only fixes. When a bug or security issue is found, the fix is merged into `main` and
+then **backported** — applied to every still-supported stable branch — and tagged as a new
+patch release (`v4.5.x`, `v4.4.x`, and so on). This is why staying on the latest patch of your
+series keeps you secure without changing any features.
+
+<LifecycleDiagram />
+
+Backporting continues for each series until it reaches **End of Life**, after which it no longer
+receives fixes. To gain new features — rather than just fixes — administrators must upgrade to a
+newer `MAJOR.MINOR` release.
+
+### Pre-releases
+
+Some Mastodon servers — including [mastodon.social](https://mastodon.social) — run pre-release builds to get
+earlier access to new features and to help test them before they reach administrators who prefer
+to run only stable releases. This user feedback helps shape the Mastodon product for everyone.
+
+Starting with Mastodon 4.2, the project standardized four pre-release identifiers:
+
+- **`alpha.X`** — running directly from the `main` branch on GitHub, compiled from source or
+  from a self-built container image.
+- **`nightly`** — running the project's automatically published container images, which are
+  rebuilt from the current state of `main` every night.
+- **`beta.X`** / **`rc.X`** — running a soon-to-be-finalized release, from a tagged pre-release
+  on GitHub or a project-built container image.
+
+:::note
+Any dependencies listed for development versions (nightly/alpha) of Mastodon are based on
+tracking the development process of the `main` branch on GitHub. These are subject to
+change at any time as project requirements change.
+:::
+
+### Forks
+
+Forks and other local code modifications are indicated by a trailing `+text` on the version
+string. The popular soft-fork [Glitch](https://glitch-soc.github.io/docs/), for example, is
+identified by `+glitch` (such as `v4.5.1+glitch`).
+
+You can generally assume that these forks do not have significant
+impact on the compatibility of an underlying component within the interoperability matrix, but you should
+always verify with the documentation for the specific fork.
