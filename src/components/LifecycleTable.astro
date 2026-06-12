@@ -16,9 +16,10 @@ const stateMeta: Record<LifecycleState, { symbol: string; label: string }> = {
         <tr>
           <th scope="col"></th>
           <th scope="col">Branch</th>
-          <th scope="col">Released</th>
-          <th scope="col">End of Life Date</th>
-          <th scope="col">Days Supported</th>
+          <th scope="col">Patch</th>
+          <th scope="col">Start</th>
+          <th scope="col">End</th>
+          <th scope="col">Days</th>
           <th scope="col">Status</th>
           <th scope="col" class="sm-center"><span class="sr-only">Supported</span></th>
         </tr>
@@ -29,6 +30,7 @@ const stateMeta: Record<LifecycleState, { symbol: string; label: string }> = {
             <tr data-state={entry.state}>
               <th scope="row" class="sm-row-head">{entry.version}</th>
               <td>{branchName(entry)}</td>
+              <td class="lc-patch" data-version={entry.version}>—</td>
               <td>{entry.released ?? '—'}</td>
               <td>{entry.endOfLife ?? '—'}</td>
               <td>{daysSupported(entry)?.toLocaleString() ?? '—'}</td>
