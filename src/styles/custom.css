@@ -655,19 +655,11 @@
   rx: 3;
   ry: 3;
 }
-/* "No end date" badge: a dashed, muted continuation marker. */
+/* "No end date" badge: a muted continuation marker. */
 .support-timeline .st-badge {
   fill: var(--sl-color-gray-5);
-  stroke: var(--sl-color-gray-4);
-  stroke-width: 1;
-  stroke-dasharray: 2 3;
   rx: 3;
   ry: 3;
-}
-.support-timeline .st-plus {
-  fill: var(--sl-color-white);
-  font-size: 14px;
-  font-weight: 700;
 }
 .support-timeline .st-legend {
   fill: var(--sl-color-gray-2);
