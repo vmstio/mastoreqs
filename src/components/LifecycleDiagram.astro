@@ -200,7 +200,13 @@ const supEndX = supported.length ? supported[supported.length - 1].nodeX : mainX
             {b.subLabel}
           </text>
         )}
-        <text class="lc-version" x={b.nodeX} y={NODE_Y - 22} style={`fill:${b.color}`}>
+        <text
+          class="lc-version"
+          data-version={b.version}
+          x={b.nodeX}
+          y={NODE_Y - 22}
+          style={`fill:${b.color}`}
+        >
           {versionLabel(b.version)}
         </text>
         <text class="lc-branchname" x={b.tickX} y={TIMELINE_Y + 26} style={`fill:${b.color}`}>

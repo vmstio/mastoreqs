@@ -10,7 +10,12 @@
   var cells = Array.prototype.slice.call(
     document.querySelectorAll('.lc-patch')
   );
-  if (cells.length === 0) return; // not the lifecycle page
+  // Diagram version labels (e.g. "4.5.x") that should resolve to the same
+  // patch numbers as the table.
+  var labels = Array.prototype.slice.call(
+    document.querySelectorAll('.lc-version[data-version]')
+  );
+  if (cells.length === 0 && labels.length === 0) return; // not the lifecycle page
 
   fetch('https://vmcrawl.com/stats/release-versions')
     .then(function (res) {
@@ -45,6 +50,12 @@
         } else {
           cell.textContent = info.latest;
         }
+      });
+
+      // Diagram: replace the "4.5.x" placeholder with the actual patch.
+      labels.forEach(function (label) {
+        var info = byBranch[label.dataset.version];
+        if (info && info.latest) label.textContent = info.latest;
       });
     })
     .catch(function (err) {
