@@ -38,6 +38,12 @@ export default defineConfig({
           tag: 'script',
           attrs: { src: '/scripts/advisor.js', defer: true },
         },
+        // Fills the Support Lifecycle table's "Latest Patch" column from the
+        // vmcrawl API at runtime. Independent of the advisor scripts.
+        {
+          tag: 'script',
+          attrs: { src: '/scripts/lifecycle-patch.js', defer: true },
+        },
       ],
       social: [
         {
