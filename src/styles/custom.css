@@ -13,6 +13,16 @@
   --sm-radius: 0.7rem;
   --sm-gridline: var(--sl-color-gray-5);
 
+  /* Branch-lifecycle diagram palette. The release-state colours alias the
+     support-state tokens so the git-graph matches the table's ✓ / ! / ✕ marks
+     and adapts per theme; the dev branch uses the Mastodon brand purple (also
+     the logo and advisor chevron), since Nova's own accent is monochrome. */
+  --lc-eol: var(--sm-no);
+  --lc-deprecated: var(--sm-warn);
+  --lc-supported: var(--sm-yes);
+  --lc-dev: #6364ff;
+  --lc-line: var(--sl-color-gray-4);
+
   /* Custom <select> chevron for the upgrade advisor dropdowns. */
   --sm-select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%236364ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
 }
@@ -26,6 +36,9 @@
   --sm-no-bg: rgba(185, 28, 28, 0.09);
 
   --sm-gridline: var(--sl-color-gray-6);
+
+  /* Darker brand purple for the dev branch, matching the light-theme chevron. */
+  --lc-dev: #4a4bd6;
 
   --sm-select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%234a4bd6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
 }
@@ -241,6 +254,7 @@
 }
 /* Optically nudge the exclamation, which sits high in its glyph box. */
 .sm-cell[data-state='warn'] .sm-mark,
+.sm-cell[data-state='deprecated'] .sm-mark,
 .sm-legend-item[data-state='warn'] .sm-mark {
   font-size: 0.9rem;
 }
@@ -250,7 +264,8 @@
   background: var(--sm-yes-bg);
   color: var(--sm-yes);
 }
-.sm-cell[data-state='warn'] .sm-mark {
+.sm-cell[data-state='warn'] .sm-mark,
+.sm-cell[data-state='deprecated'] .sm-mark {
   background: var(--sm-warn-bg);
   color: var(--sm-warn);
 }
@@ -547,4 +562,120 @@
    nothing to pick, while the "bundled" advice stays at full contrast. */
 .uadv-section.is-managed .uadv-controls {
   opacity: 0.55;
+}
+
+/* ---- Lifecycle branch diagram ----------------------------------------- */
+
+.lifecycle-diagram {
+  margin: 1.5rem 0;
+}
+.lifecycle-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Cap the width so the diagram doesn't stretch text apart on wide screens. */
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+.lifecycle-diagram .lc-timeline {
+  stroke: var(--lc-line);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.lifecycle-diagram .lc-branch {
+  fill: none;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.lifecycle-diagram .lc-backport {
+  fill: none;
+  stroke: var(--lc-supported);
+  stroke-width: 2;
+  stroke-dasharray: 6 6;
+  stroke-linecap: round;
+}
+
+.lifecycle-diagram text {
+  font-family: var(--sl-font-system, system-ui, sans-serif);
+  text-anchor: middle;
+}
+.lifecycle-diagram .lc-cluster {
+  font-size: 15px;
+  font-weight: 600;
+}
+.lifecycle-diagram .lc-version,
+.lifecycle-diagram .lc-sublabel {
+  font-size: 15px;
+  font-weight: 700;
+}
+.lifecycle-diagram .lc-sublabel {
+  font-size: 13px;
+  font-weight: 600;
+}
+.lifecycle-diagram .lc-branchname,
+.lifecycle-diagram .lc-nightly {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ---- Support timeline (Gantt) ----------------------------------------- */
+
+.support-timeline {
+  margin: 1.5rem 0;
+}
+.support-timeline svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 56rem;
+  margin-inline: auto;
+}
+.support-timeline text {
+  font-family: var(--sl-font-system, system-ui, sans-serif);
+}
+.support-timeline .st-grid {
+  stroke: var(--sm-gridline);
+  stroke-width: 1;
+}
+.support-timeline .st-today {
+  stroke: var(--sl-color-gray-3);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+.support-timeline .st-tick {
+  fill: var(--sl-color-gray-3);
+  font-size: 12px;
+}
+.support-timeline .st-label {
+  fill: var(--sl-color-white);
+  font-size: 13px;
+  font-weight: 600;
+}
+.support-timeline .st-bar {
+  rx: 3;
+  ry: 3;
+}
+/* "No end date" badge: a dashed, muted continuation marker. */
+.support-timeline .st-badge {
+  fill: var(--sl-color-gray-5);
+  stroke: var(--sl-color-gray-4);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  rx: 3;
+  ry: 3;
+}
+.support-timeline .st-plus {
+  fill: var(--sl-color-white);
+  font-size: 14px;
+  font-weight: 700;
+}
+.support-timeline .st-legend {
+  fill: var(--sl-color-gray-2);
+  font-size: 12px;
+}
+.support-timeline .st-legend-icon {
+  rx: 2;
+  ry: 2;
 }

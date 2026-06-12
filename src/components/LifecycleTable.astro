@@ -1,9 +1,10 @@
 ---
-import { lifecycle, type LifecycleState } from '../data/requirements';
+import { lifecycle, branchName, daysSupported, type LifecycleState } from '../data/requirements';
 
 const stateMeta: Record<LifecycleState, { symbol: string; label: string }> = {
   development: { symbol: '✓', label: 'Development Branch' },
   supported: { symbol: '✓', label: 'Release Branch' },
+  deprecated: { symbol: '!', label: 'Deprecated Branch' },
   eol: { symbol: '✕', label: 'End of Life' },
 };
 ---
@@ -14,8 +15,11 @@ const stateMeta: Record<LifecycleState, { symbol: string; label: string }> = {
       <thead>
         <tr>
           <th scope="col"></th>
-          <th scope="col">Branch Status</th>
+          <th scope="col">Branch</th>
+          <th scope="col">Released</th>
           <th scope="col">End of Life Date</th>
+          <th scope="col">Days Supported</th>
+          <th scope="col">Status</th>
           <th scope="col" class="sm-center"><span class="sr-only">Supported</span></th>
         </tr>
       </thead>
@@ -24,8 +28,11 @@ const stateMeta: Record<LifecycleState, { symbol: string; label: string }> = {
           lifecycle.map((entry) => (
             <tr data-state={entry.state}>
               <th scope="row" class="sm-row-head">{entry.version}</th>
-              <td>{entry.status}</td>
+              <td>{branchName(entry)}</td>
+              <td>{entry.released ?? '—'}</td>
               <td>{entry.endOfLife ?? '—'}</td>
+              <td>{daysSupported(entry)?.toLocaleString() ?? '—'}</td>
+              <td>{entry.status}</td>
               <td class="sm-cell sm-center" data-state={entry.state}>
                 <span class="sm-mark" role="img" aria-label={stateMeta[entry.state].label}>
                   {stateMeta[entry.state].symbol}

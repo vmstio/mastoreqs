@@ -1,0 +1,142 @@
+---
+import { lifecycle, type LifecycleState } from '../data/requirements';
+
+/**
+ * Gantt-style support timeline: one bar per release, spanning its release date
+ * to End of Life on a shared time axis. Generated from the same `lifecycle`
+ * data as the table and branch diagram. Releases with no recorded release date
+ * (the development branch, and any pre-release-dated version) are omitted, since
+ * they can't be placed on the axis. A release with no EOL date runs to today and
+ * gets a dashed "+" badge.
+ */
+
+const DAY = 86_400_000;
+const now = Date.now();
+
+const BAR_COLOR: Partial<Record<LifecycleState, string>> = {
+  supported: 'var(--lc-supported)',
+  deprecated: 'var(--lc-deprecated)',
+  eol: 'var(--lc-eol)',
+};
+
+// `lifecycle` is newest-first, which puts the newest release at the top row.
+const rows = lifecycle
+  .filter((e) => e.released && BAR_COLOR[e.state])
+  .map((e) => {
+    const start = Date.parse(e.released!);
+    const eol = e.endOfLife ? Date.parse(e.endOfLife) : null;
+    return {
+      version: e.version,
+      start,
+      end: eol ?? now,
+      ongoing: eol === null,
+      color: BAR_COLOR[e.state]!,
+    };
+  });
+
+// Time domain: earliest release to the latest of (today, any EOL).
+const t0 = Math.min(...rows.map((r) => r.start));
+const t1 = Math.max(now, ...rows.map((r) => r.end));
+
+// Layout (user units; the <svg> scales to its container).
+const W = 900;
+const PLOT_L = 46; // left edge of the plot (version labels sit to its left)
+const PLOT_R = 838; // right edge; the "+" badge extends beyond this
+const TOP = 12;
+const ROW_H = 30;
+const BAR_H = 24;
+const BADGE_W = 28;
+
+const chartBottom = TOP + rows.length * ROW_H;
+const tickY = chartBottom + 18;
+const legendY = tickY + 26;
+const H = legendY + 16;
+
+const x = (t: number) => PLOT_L + ((t - t0) / (t1 - t0)) * (PLOT_R - PLOT_L);
+const todayX = x(now);
+
+// One gridline per Jan 1 that falls inside the domain.
+const years: { year: number; x: number }[] = [];
+for (let y = new Date(t0).getUTCFullYear(); y <= new Date(t1).getUTCFullYear(); y++) {
+  const jan = Date.UTC(y, 0, 1);
+  if (jan >= t0 && jan <= t1) years.push({ year: y, x: x(jan) });
+}
+
+const legend = [
+  { label: 'Supported', color: 'var(--lc-supported)' },
+  { label: 'Deprecated', color: 'var(--lc-deprecated)' },
+  { label: 'End of Life', color: 'var(--lc-eol)' },
+];
+---
+
+<figure class="support-timeline not-content">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-labelledby="st-title st-desc" preserveAspectRatio="xMidYMid meet">
+    <title id="st-title">Mastodon support timeline</title>
+    <desc id="st-desc">
+      Support windows for each Mastodon release from its release date to End of Life:
+      {rows
+        .map(
+          (r) =>
+            `${r.version} (${new Date(r.start).toISOString().slice(0, 10)} to ${
+              r.ongoing ? 'ongoing' : new Date(r.end).toISOString().slice(0, 10)
+            })`
+        )
+        .join(', ')}.
+    </desc>
+
+    {/* Year gridlines + labels. */}
+    {years.map((y) => (
+      <g>
+        <line class="st-grid" x1={y.x} y1={TOP} x2={y.x} y2={chartBottom} />
+        <text class="st-tick" x={y.x} y={tickY} text-anchor="middle">
+          {y.year}
+        </text>
+      </g>
+    ))}
+
+    {/* Today marker. */}
+    <line class="st-today" x1={todayX} y1={TOP} x2={todayX} y2={chartBottom} />
+    <text class="st-tick" x={todayX} y={TOP - 2} text-anchor="middle">today</text>
+
+    {/* Release rows. */}
+    {rows.map((r, i) => {
+      const rowY = TOP + i * ROW_H;
+      const barY = rowY + (ROW_H - BAR_H) / 2;
+      const bx = x(r.start);
+      const bw = Math.max(2, x(r.end) - bx);
+      return (
+        <g>
+          <text class="st-label" x={PLOT_L - 12} y={barY + BAR_H / 2 + 4} text-anchor="end">
+            {r.version}
+          </text>
+          <rect class="st-bar" x={bx} y={barY} width={bw} height={BAR_H} style={`fill:${r.color}`} />
+          {r.ongoing && (
+            <g>
+              <rect class="st-badge" x={x(r.end) + 4} y={barY} width={BADGE_W} height={BAR_H} />
+              <text class="st-plus" x={x(r.end) + 4 + BADGE_W / 2} y={barY + BAR_H / 2 + 5} text-anchor="middle">
+                +
+              </text>
+            </g>
+          )}
+        </g>
+      );
+    })}
+
+    {/* Legend. */}
+    {legend.map((item, i) => {
+      const lx = PLOT_L + i * 140;
+      return (
+        <g transform={`translate(${lx}, ${legendY})`}>
+          <rect class="st-legend-icon" x="0" y="0" width="14" height="14" style={`fill:${item.color}`} />
+          <text class="st-legend" x="20" y="11">
+            {item.label}
+          </text>
+        </g>
+      );
+    })}
+    <g transform={`translate(${PLOT_L + legend.length * 140}, ${legendY})`}>
+      <rect class="st-badge" x="0" y="0" width="14" height="14" />
+      <text class="st-legend" x="20" y="11">No end date</text>
+    </g>
+  </svg>
+</figure>
