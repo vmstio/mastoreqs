@@ -121,9 +121,9 @@
             { "version": "8.18", "support": ["yes", null, null, null, null, null, null, null, null] },
             { "version": "8.17", "support": ["yes", "yes", null, null, null, null, null, null, null] },
             { "version": "8.16", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
-            { "version": "8.15", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
-            { "version": "8.14", "support": ["yes", "yes", "yes", null, null, null, null, null, null] },
-            { "version": "8.13", "support": ["yes", "yes", "yes", null, null, null, null, null, null] }
+            { "version": "8.15", "support": ["yes", "yes", "yes", "no", "no", null, null, null, null] },
+            { "version": "8.14", "support": ["yes", "yes", "yes", "no", "no", "no", null, null, null] },
+            { "version": "8.13", "support": ["yes", "yes", "yes", "no", "no", "no", "no", null, null] }
           ]
         },
         {
