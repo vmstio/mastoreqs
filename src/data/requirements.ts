@@ -23,11 +23,13 @@ export interface Component {
   matrices: Matrix[];
 }
 
-export type LifecycleState = 'development' | 'supported' | 'eol';
+export type LifecycleState = 'development' | 'supported' | 'deprecated' | 'eol';
 
 export interface LifecycleEntry {
   version: string;
   status: string;
+  /** Release date (ISO `YYYY-MM-DD`), or null if not recorded. */
+  released: string | null;
   endOfLife: string | null;
   state: LifecycleState;
 }
@@ -43,6 +45,31 @@ const requirements = data as unknown as Requirements;
 export const mastodonVersions = requirements.mastodonVersions;
 export const lifecycle = requirements.lifecycle;
 export const components = requirements.components;
+
+/**
+ * Git branch name for a lifecycle entry: `main` for the development branch,
+ * otherwise the stable branch (e.g. `stable-45` for "4.5").
+ */
+export function branchName(entry: LifecycleEntry): string {
+  return entry.state === 'development'
+    ? 'main'
+    : `stable-${entry.version.replace(/\./g, '')}`;
+}
+
+/**
+ * Total days a release is (or was) supported: from its release date to its End
+ * of Life date, or to `now` for a branch still supported (no EOL date set).
+ * Returns null when the release date is unknown.
+ */
+export function daysSupported(entry: LifecycleEntry, now: Date = new Date()): number | null {
+  if (!entry.released) return null;
+  const start = Date.parse(entry.released);
+  const end = entry.endOfLife ? Date.parse(entry.endOfLife) : now.getTime();
+  if (Number.isNaN(start) || Number.isNaN(end)) return null;
+  // Floor to completed days so an ongoing branch's count doesn't drift with the
+  // build's time-of-day (release date is midnight UTC; `now` carries a clock time).
+  return Math.floor((end - start) / 86_400_000);
+}
 
 /** Look up a single matrix by component id and matrix id. */
 export function getMatrix(componentId: string, matrixId?: string): Matrix {

@@ -4,11 +4,12 @@ description: We track dependencies for the five most recent Mastodon branches to
 ---
 
 import LifecycleTable from '../../components/LifecycleTable.astro';
+import LifecycleDiagram from '../../components/LifecycleDiagram.astro';
 
 We track dependencies for five years worth of Mastodon branches to help administrators
 determine upgrade path and deployment options. 
 
-![Mastodon Branches](/mastodon-branches.png)
+<LifecycleDiagram />
 
 Any dependencies listed for development versions (nightly/alpha) of Mastodon are based on
 tracking the development process of the `main` branch on GitHub. These are subject to

@@ -1,14 +1,14 @@
 {
   "mastodonVersions": ["4.6", "4.5", "4.4", "4.3", "4.2", "4.1", "4.0", "3.5", "3.4"],
   "lifecycle": [
-    { "version": "4.6", "status": "Main Development Branch", "endOfLife": null, "state": "development" },
-    { "version": "4.5", "status": "Latest Release Branch", "endOfLife": null, "state": "supported" },
-    { "version": "4.4", "status": "Previous Release Branch", "endOfLife": null, "state": "supported" },
-    { "version": "4.3", "status": "End of Life", "endOfLife": "2026-05-06", "state": "eol" },
-    { "version": "4.2", "status": "End of Life", "endOfLife": "2026-01-08", "state": "eol" },
-    { "version": "4.1", "status": "End of Life", "endOfLife": "2025-04-08", "state": "eol" },
-    { "version": "4.0", "status": "End of Life", "endOfLife": "2023-10-31", "state": "eol" },
-    { "version": "3.x", "status": "End of Life", "endOfLife": "2023-12-31", "state": "eol" }
+    { "version": "4.6", "status": "Development", "released": null, "endOfLife": null, "state": "development" },
+    { "version": "4.5", "status": "Latest", "released": "2025-11-30", "endOfLife": null, "state": "supported" },
+    { "version": "4.4", "status": "Previous", "released": "2025-07-08", "endOfLife": null, "state": "supported" },
+    { "version": "4.3", "status": "End of Life", "released": "2024-10-08", "endOfLife": "2026-05-06", "state": "eol" },
+    { "version": "4.2", "status": "End of Life", "released": "2023-09-21", "endOfLife": "2026-01-08", "state": "eol" },
+    { "version": "4.1", "status": "End of Life", "released": "2023-02-10", "endOfLife": "2025-04-08", "state": "eol" },
+    { "version": "4.0", "status": "End of Life", "released": "2022-11-14", "endOfLife": "2023-10-31", "state": "eol" },
+    { "version": "3.x", "status": "End of Life", "released": null, "endOfLife": "2023-12-31", "state": "eol" }
   ],
   "components": {
     "ruby": {
